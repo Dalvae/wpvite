@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) )
+if (! defined('ABSPATH'))
     exit;
 
 /*
@@ -35,24 +35,23 @@ if (IS_LOGIN_PAGE) {
 }
 
 // enqueue hook
-add_action(HOOK_PREFIX.'_enqueue_scripts', function() {
+add_action(HOOK_PREFIX . '_enqueue_scripts', function () {
 
     if (defined('IS_VITE_DEVELOPMENT') && IS_VITE_DEVELOPMENT === true && ((defined('DEVELOPMENT_IP') && $_SERVER['REMOTE_ADDR'] === DEVELOPMENT_IP) || !defined('DEVELOPMENT_IP'))) {
 
         // insert hmr into head for live reload
-        function vite_head_module_hook() {
+        function vite_head_module_hook()
+        {
             echo '<script type="module" crossorigin src="' . VITE_SERVER . '/' . VITE_ENTRY_POINT . '"></script>';
         }
-        add_action(HOOK_PREFIX.'_head', 'vite_head_module_hook');
-
-
+        add_action(HOOK_PREFIX . '_head', 'vite_head_module_hook');
     } else {
 
         // production version, 'npm run build' must be executed in order to generate assets
         // ----------
 
         // read manifest.json to figure out what to enqueue
-        $manifest = json_decode( file_get_contents( DIST_PATH . '/manifest.json'), true );
+        $manifest = json_decode(file_get_contents(DIST_PATH . '/.vite/manifest.json'), true);
 
         // is ok
         if (is_array($manifest)) {
@@ -69,12 +68,7 @@ add_action(HOOK_PREFIX.'_enqueue_scripts', function() {
                 if (!empty($js_file)) {
                     wp_enqueue_script('theme', DIST_URI . '/' . $js_file, JS_DEPENDENCY, '', JS_LOAD_IN_FOOTER);
                 }
-
-
             }
-
         }
-
     }
-
 });
