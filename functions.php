@@ -51,13 +51,13 @@ add_action('after_setup_theme', function () {
     register_nav_menu('mobile-menu', 'Navigation (Mobile)');
 
     /* `Add Support for Post thumbnail */
-    //    add_theme_support('post-thumbnails');
-    //    set_post_thumbnail_size( 800, 800 );
+    add_theme_support('post-thumbnails');
+    set_post_thumbnail_size( 800, 800 );
 
     /* `Custom image sizes */
 
-    //    add_image_size( 'category-thumb', 300 ); // 300 pixels wide (and unlimited height)
-    //    add_image_size( 'custom-size', 220, 180 ); // 220 pixels wide by 180 pixels tall, soft proportional crop mode
-    //    add_image_size( 'homepage-thumb', 220, 180, true ); // (cropped)
+    add_image_size( 'category-thumb', 300 ); // 300 pixels wide (and unlimited height)
+    add_image_size( 'custom-size', 220, 180 ); // 220 pixels wide by 180 pixels tall, soft proportional crop mode
+    add_image_size( 'homepage-thumb', 220, 180, true ); // (cropped)
 
 });
