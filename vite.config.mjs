@@ -1,12 +1,14 @@
 import { defineConfig } from "vite";
+import tailwindcss from '@tailwindcss/vite';
 import liveReload from "vite-plugin-live-reload";
-const { resolve } = require("path");
-const fs = require("fs");
+import { resolve } from "path";
+import fs from "fs";
 
 // https://vitejs.dev/config
 export default defineConfig({
   plugins: [
     //vue(),
+    tailwindcss(),
     liveReload(__dirname + "/**/*.php"),
   ],
 
