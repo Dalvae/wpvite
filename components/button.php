@@ -13,6 +13,6 @@ $classes = 'text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text
 $args['class'] = implode(' ', array_merge(explode(' ', $classes), explode(' ', $args['class'])));
 
 ?>
-<a href="<?php echo $args['href']; ?>" class="<?php echo $args['href']; ?>" target="<?php echo $args['target']; ?>">
+<a href="<?php echo esc_url($args['href']); ?>" class="<?php echo esc_attr($args['class']); ?>" target="<?php echo esc_attr($args['target']); ?>">
     <?php echo $args['text']; ?>
 </a>

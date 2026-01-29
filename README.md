@@ -1,87 +1,93 @@
-## WordPress Starter TailwindCSS Vite Theme
+# WPVite Starter
 
-Clean and lightweight starter theme based on TailwindCSS, AlpineJS, Vite, SCSS, Turbo and incorporates loads of
-functions ready to be turned on and off in the functions.php and inc/ directory. Trimed and adapted to docker
-from https://github.com/mrl22/WordPress-Starter-TailwindCSS-Vite-Theme
+WordPress starter theme — Vite 7, Tailwind CSS 4, AlpineJS, Turbo. Docker dev environment with WP-CLI.
 
-This theme strips WordPress back, removes all the bloat and leaves you with a clean starting point, a favicon, a single
-css and js resource. **Just Four** requests in total.
+## Quick Start
 
-Some features within this theme may not be laid out the way you like to work, but feel free to customise it. I developed
-this theme for ourselves and to streamline getting started on a new bespoke theme for a project.
-
-The JS and SCSS within this theme are compiled using Vite from the /src folder to the /dist folder. A basic
-understanding of npm and composer is required to use this theme.
-
-## Installation & Run
-
-### Development
-
-```
-$ npm install
-$ npm run build
+```bash
+pnpm setup
 ```
 
-You can also run `npm run watch` this which will start a Vite server for you to develop in realtime. You must change
-`IS_VITE_DEVELOPMENT` in functions.php to true for this to work.
+This runs `setup.js` which: copies `.env.example` to `.env`, installs deps (pnpm + composer), builds assets, starts Docker, and installs WordPress.
 
-### Useful Files
+**Default login:** `admin` / `admin` at `http://localhost:8000/wp-admin`
 
-Files from `src` will be compiled in to `dist` using Vite. If you wish to retain ownership of the source code, do not
-upload or give your client access or access to the `src` folder.
+## Manual Setup
 
-- `src/theme.js` - Theme JavaScript File.
-- `src/theme.scss` - Theme CSS Styles File.
-- `src/assets/` - use this folder for any assets, these will be compiled in to `dist/assets/`.
-
-### Live Server
-
-```
-$ composer install
+```bash
+cp env.example .env          # edit THEME_SLUG, PORT, etc.
+pnpm install
+composer install
+pnpm build
+docker compose up -d
+pnpm dev                     # start Vite dev server (HMR)
 ```
 
-Make sure your compiled `build` folder is uploaded.
+## Commands
 
-### Docker Setup
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start Vite dev server with HMR |
+| `pnpm build` | Build production assets to `dist/` |
+| `pnpm wp <command>` | Run WP-CLI (e.g. `pnpm wp theme list`) |
+| `pnpm setup` | Full setup from scratch |
 
-1. Copy `.env.example` to `.env` and adjust variables if needed:
+## Stack
 
-   ```bash
-   cp .env.example .env
-   ```
+- **Vite 7** — build tool + HMR via [@kucrut/vite-for-wp](https://github.com/kucrut/vite-for-wp)
+- **Tailwind CSS 4** — CSS-first config, no `tailwind.config.js` needed
+- **AlpineJS** — lightweight DOM interactivity
+- **Turbo** — SPA-like navigation
+- **Docker** — WordPress + MariaDB + WP-CLI
 
-2. Start Docker containers:
-
-   ```bash
-   docker-compose up -d
-   ```
-
-3. Access:
-
-   - WordPress: http://localhost:80
-   - phpMyAdmin: http://localhost:8080
-
-4. Theme development:
-   ```bash
-   npm install
-   npm run watch   # For development
-   npm run build   # For production
-   ```
-
-Note: If using Apple Silicon, uncomment the `platform: linux/x86_64` line in docker-compose.yml
+## Project Structure
 
 ```
-## Packages
-
-- Vite
-- TailwindCSS
-- PostCSS
-- AlpineJS
-- Turbo (Loaded via NPM)
-- Favicon - https://realfavicongenerator.net/
-
-## Theme Functions / Features
-
-I recommend that you read the entire functions.php and src/ folder. Uncomment / comment out features which you
-need in your theme.
+├── src/
+│   ├── theme.js          # JS entry point
+│   ├── theme.css         # CSS entry point (Tailwind)
+│   ├── css/              # Component styles
+│   └── js/               # Component scripts
+├── inc/
+│   ├── vite.php          # Vite asset loading (via vite-for-wp)
+│   ├── performance.php   # WP performance optimizations
+│   ├── cleanup.php       # Remove WP bloat
+│   ├── general.php       # Theme utilities
+│   ├── nav_walker.php    # Tailwind nav walker
+│   ├── svg.php           # Sanitized SVG uploads (admin only)
+│   └── ...               # ACF, blog, post types, etc.
+├── template-parts/       # Reusable template parts
+├── components/           # PHP components
+├── dist/                 # Built assets (committed)
+├── docker-compose.yml    # Docker services
+├── vite.config.mjs       # Vite configuration
+└── functions.php         # Theme bootstrap
 ```
+
+## Configuration
+
+Edit `.env` for your project:
+
+```env
+THEME_SLUG=starter        # Docker volume mount name
+PORT=8000                  # WordPress port
+WORDPRESS_DEBUG=1          # WP_DEBUG flag
+DB_NAME=wordpress
+DB_ROOT_PASSWORD=password
+```
+
+## Vite + WordPress Integration
+
+Asset loading is handled by `vite-for-wp`. No manual dev/prod switching needed — it auto-detects whether the Vite dev server is running:
+
+- **Dev:** loads assets from Vite dev server with HMR
+- **Prod:** loads hashed assets from `dist/manifest.json`
+
+## Debug Helpers
+
+When `WP_DEBUG` is enabled (default in dev), the theme shows:
+
+- Current template filename (bottom-left corner)
+- Tailwind breakpoint indicator (bottom-right corner)
+
+Both are hidden in production.

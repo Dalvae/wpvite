@@ -1,4 +1,4 @@
-import './theme.scss';
+import './theme.css';
 
 // Turbo SPA
 import * as Turbo from "@hotwired/turbo";

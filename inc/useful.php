@@ -5,7 +5,7 @@
 
 add_action('get_footer', function () {
     global $template;
-    if (IS_VITE_DEVELOPMENT) {
+    if (defined('WP_DEBUG') && WP_DEBUG) {
         echo '<div class="fixed bottom-0 left-0 z-[9999] bg-red-500 text-white px-1 py-0.5">';
         echo basename($template);
         echo '</div>';
@@ -16,7 +16,7 @@ add_action('get_footer', function () {
 ----------------------------------------------------------------------------------------------------*/
 
 add_action('wp_head', function () {
-    if (IS_VITE_DEVELOPMENT) {
+    if (defined('WP_DEBUG') && WP_DEBUG) {
         echo '<div class="fixed bottom-0 right-0 z-[9999] bg-red-500 text-white px-1 py-0.5">
         <div class="block sm:hidden">XS</div>
         <div class="hidden sm:block md:hidden">SM</div>

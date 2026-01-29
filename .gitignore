@@ -1,12 +1,15 @@
-## generic files to ignore
-error_log
-_notes
-*.DS_Store
-.idea
-*~
 node_modules/
 vendor/
-.aider.*
+wp-data/
+
 .env
-wp-data/*
+.env.local
+*.log
+error_log
+
+*.DS_Store
+.idea/
+.vscode/
+*~
 .aider*
+Thumbs.db

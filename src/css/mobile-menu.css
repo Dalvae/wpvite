@@ -1,18 +1,18 @@
 
 :root {
-  --mobile-menu-width: 90; // vw
+  --mobile-menu-width: 90;
   --mobile-menu-speed: 300ms;
 }
 
 @media (min-width: 640px) {
   :root {
-    --mobile-menu-width: 80; // vw
+    --mobile-menu-width: 80;
   }
 }
 
 @media (min-width: 768px) {
   :root {
-    --mobile-menu-width: 70; // vw
+    --mobile-menu-width: 70;
   }
 }
 @media (min-width: 1024px) {

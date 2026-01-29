@@ -4,7 +4,6 @@ document.addEventListener("turbo:load", function () {
     toggles.forEach(toggle => {
 
         toggle.addEventListener('click', function (e) {
-            console.log('mobile-menu-toggle');
             e.preventDefault();
             document.querySelector('#page').classList.toggle('mobile-menu-open');
         });
