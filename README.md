@@ -46,6 +46,8 @@ pnpm dev                     # start Vite dev server (HMR)
 ├── src/
 │   ├── theme.js          # JS entry point
 │   ├── theme.css         # CSS entry point (Tailwind)
+│   ├── css/design-system.css   # Semantic tokens + type scale + button primitives
+│   ├── tokens/design-tokens.json # LLM/design-token source of truth
 │   ├── css/              # Component styles
 │   └── js/               # Component scripts
 ├── inc/
@@ -63,6 +65,12 @@ pnpm dev                     # start Vite dev server (HMR)
 ├── vite.config.mjs       # Vite configuration
 └── functions.php         # Theme bootstrap
 ```
+
+## Design System Base
+
+- CSS tokens and primitives: `src/css/design-system.css`
+- JSON tokens (DTCG-like): `src/tokens/design-tokens.json`
+- Documentation: `DESIGN_SYSTEM.md`
 
 ## Configuration
 

@@ -14,7 +14,7 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class('bg-white text-gray-900 antialiased'); ?>>
+<body <?php body_class('bg-background text-foreground antialiased'); ?>>
     <?php wp_body_open(); ?>
     <div id="page" class="min-h-screen flex flex-col">
         <div id="mobile-menu-container">
