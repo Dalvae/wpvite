@@ -35,6 +35,7 @@ For roadmap and extraction strategy, read:
 - `docs/starter-system-roadmap.md`
 - `docs/infinitalent-extraction-map.md`
 - `docs/section-library.md`
+- `docs/pipeline.md`
 - `docs/site-composer.md`
 
 ## Architecture Rules
@@ -153,7 +154,19 @@ The repository now includes a declarative site composer layer:
 
 When introducing a new implemented design-system preset, page family, or addon, update the composer registry so new spin-offs can be declared instead of hand-assembled.
 
-### 9. Naming
+### 9. Pipeline
+
+The current preferred fast-spin path is pipeline-driven:
+
+- `config/brand-presets.json` defines switchable brand themes
+- `config/site.config.json` defines the active site
+- `manifests/pages/*.json` define page-level structure
+- `scripts/spin-init.mjs` initializes the active site config
+- `scripts/pipeline-validate.mjs` validates the chosen setup
+
+Treat this pipeline as more important than the site composer when the task is about speeding up spin-offs inside this starter.
+
+### 10. Naming
 
 Use neutral starter naming for shared helpers and classes.
 
@@ -167,7 +180,7 @@ Bad:
 
 - helper names that preserve an old client/brand name
 
-### 10. Definition of done for reusable work
+### 11. Definition of done for reusable work
 
 A change is not complete if it only works for one page and leaves no reusable contract behind.
 

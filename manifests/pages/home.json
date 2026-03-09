@@ -1,0 +1,104 @@
+{
+  "slug": "home",
+  "title": "Home",
+  "template": "section-stack",
+  "sections": [
+    {
+      "type": "hero-split",
+      "kicker": "Northshore Advisory",
+      "title": "Operational clarity for growing service teams",
+      "intro": "Choose a brand preset, select the sections you need, and adapt the content instead of rebuilding the site system.",
+      "actions": [
+        {
+          "text": "Book a discovery call",
+          "href": "/contact",
+          "variant": "primary",
+          "icon": "arrow-right"
+        },
+        {
+          "text": "See services",
+          "href": "/services",
+          "variant": "ghost",
+          "icon": "external-link"
+        }
+      ]
+    },
+    {
+      "type": "stats-band",
+      "kicker": "Starter System",
+      "title": "Built for faster spin-offs",
+      "items": [
+        { "value": "30", "label": "minutes to choose a theme direction" },
+        { "value": "7", "label": "implemented reusable section types" },
+        { "value": "4", "label": "page-family scaffolds ready" },
+        { "value": "1", "label": "starter to scale from" }
+      ]
+    },
+    {
+      "type": "offer-cards",
+      "kicker": "Section Library",
+      "title": "Reusable blocks, not page-by-page rebuilding",
+      "items": [
+        {
+          "badge": "Hero",
+          "title": "Fullscreen entry sections",
+          "text": "Split and centered hero variants share the same scene contract.",
+          "href": "/services",
+          "action_label": "Use this pattern"
+        },
+        {
+          "badge": "Proof",
+          "title": "Results and credibility",
+          "text": "Use proof cards and stat bands without rebuilding layouts.",
+          "href": "/about",
+          "action_label": "See proof patterns"
+        },
+        {
+          "badge": "CTA",
+          "title": "Conversion-ready endings",
+          "text": "Final CTA cards and contact panels keep the bottom of the funnel consistent.",
+          "href": "/contact",
+          "action_label": "Open CTA patterns"
+        }
+      ]
+    },
+    {
+      "type": "faq-accordion",
+      "kicker": "FAQ",
+      "title": "Common starter questions",
+      "items": [
+        {
+          "question": "Do I choose sections manually?",
+          "answer": "Yes. The current model assumes section choice is manual and the starter accelerates everything after that decision."
+        },
+        {
+          "question": "Does the pipeline seed WordPress already?",
+          "answer": "Not yet. It validates the active site config and page manifests so the next iteration can seed from a stable contract."
+        }
+      ]
+    },
+    {
+      "type": "final-cta",
+      "title": "Ready to spin up the next site?",
+      "intro": "Switch preset, adjust the manifests, and evolve the same reusable core.",
+      "items": [
+        {
+          "kicker": "Preset",
+          "title": "Change the active brand",
+          "text": "Set a different brand preset in site config and keep the same component contracts.",
+          "href": "/contact",
+          "action_label": "Update preset",
+          "variant": "primary"
+        },
+        {
+          "kicker": "Pipeline",
+          "title": "Validate the next build",
+          "text": "Keep manifests and sections consistent before the site reaches WordPress.",
+          "href": "/services",
+          "action_label": "Run validation",
+          "variant": "secondary"
+        }
+      ]
+    }
+  ]
+}

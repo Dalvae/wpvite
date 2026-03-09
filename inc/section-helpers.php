@@ -75,6 +75,51 @@ if (!function_exists('starter_get_section_scene_args')) {
     }
 }
 
+if (!function_exists('starter_get_section_template_path')) {
+    function starter_get_section_template_path(string $type): string
+    {
+        $normalized_type = sanitize_key($type);
+        $registry = starter_get_section_registry();
+
+        return array_key_exists($normalized_type, $registry)
+            ? 'template-parts/sections/' . $normalized_type
+            : '';
+    }
+}
+
+if (!function_exists('starter_render_section')) {
+    function starter_render_section(string $type, array $args = array()): void
+    {
+        $template = starter_get_section_template_path($type);
+        if ($template === '') {
+            return;
+        }
+
+        get_template_part($template, null, $args);
+    }
+}
+
+if (!function_exists('starter_render_sections')) {
+    function starter_render_sections(array $sections): void
+    {
+        foreach ($sections as $section) {
+            if (!is_array($section)) {
+                continue;
+            }
+
+            $type = trim((string) ($section['type'] ?? $section['section'] ?? ''));
+            if ($type === '') {
+                continue;
+            }
+
+            $section_args = $section;
+            unset($section_args['type'], $section_args['section']);
+
+            starter_render_section($type, $section_args);
+        }
+    }
+}
+
 if (!function_exists('starter_split_stat_value')) {
     function starter_split_stat_value(string $value): array
     {

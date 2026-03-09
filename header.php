@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> data-theme="starterspin">
+<html <?php language_attributes(); ?> data-theme="starterspin" data-brand="<?php echo esc_attr(function_exists('starter_get_site_brand_preset') ? starter_get_site_brand_preset() : 'editorial-signal'); ?>">
 
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">

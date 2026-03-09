@@ -1,0 +1,10 @@
+{
+  "site": {
+    "name": "Starter Site",
+    "slug": "starter",
+    "tagline": ""
+  },
+  "brand": {
+    "preset": "editorial-signal"
+  }
+}

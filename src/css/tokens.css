@@ -155,6 +155,56 @@
   --ds-z-drawer: 1000;
 }
 
+[data-brand="clinical-trust"] {
+  --ds-color-background: oklch(0.982 0.004 240);
+  --ds-color-background-muted: oklch(0.956 0.008 240);
+  --ds-color-surface: #ffffff;
+  --ds-color-foreground: oklch(0.23 0.02 250);
+  --ds-color-foreground-strong: color-mix(in srgb, oklch(0.23 0.02 250) 92%, black 8%);
+  --ds-color-muted: oklch(0.49 0.02 250);
+  --ds-color-line: rgba(36, 56, 71, 0.14);
+  --ds-color-primary: oklch(0.61 0.12 245);
+  --ds-color-primary-hover: oklch(0.54 0.12 245);
+  --ds-color-primary-soft: rgba(79, 120, 218, 0.14);
+  --ds-color-secondary: oklch(0.3 0.02 250);
+  --ds-color-secondary-hover: oklch(0.39 0.02 250);
+  --ds-color-tertiary: oklch(0.82 0.08 195);
+  --ds-color-tertiary-hover: oklch(0.75 0.08 195);
+  --ds-color-success: oklch(0.69 0.13 165);
+  --ds-color-warning: oklch(0.78 0.12 85);
+  --ds-color-danger: oklch(0.63 0.17 25);
+  --ds-color-info: oklch(0.61 0.12 245);
+  --ds-gradient-site-canvas:
+    radial-gradient(circle at 12% 4%, rgba(211, 226, 255, 0.56) 0%, rgba(211, 226, 255, 0) 34%),
+    radial-gradient(circle at 88% 2%, rgba(208, 240, 255, 0.44) 0%, rgba(208, 240, 255, 0) 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0) 26%);
+}
+
+[data-brand="industrial-utility"] {
+  --ds-color-background: oklch(0.972 0.004 95);
+  --ds-color-background-muted: oklch(0.945 0.005 95);
+  --ds-color-surface: #ffffff;
+  --ds-color-foreground: oklch(0.18 0.015 260);
+  --ds-color-foreground-strong: color-mix(in srgb, oklch(0.18 0.015 260) 92%, black 8%);
+  --ds-color-muted: oklch(0.44 0.012 260);
+  --ds-color-line: rgba(17, 24, 39, 0.16);
+  --ds-color-primary: oklch(0.58 0.16 30);
+  --ds-color-primary-hover: oklch(0.52 0.16 30);
+  --ds-color-primary-soft: rgba(214, 89, 49, 0.14);
+  --ds-color-secondary: oklch(0.18 0.015 260);
+  --ds-color-secondary-hover: oklch(0.3 0.015 260);
+  --ds-color-tertiary: oklch(0.78 0.1 105);
+  --ds-color-tertiary-hover: oklch(0.71 0.1 105);
+  --ds-color-success: oklch(0.65 0.11 150);
+  --ds-color-warning: oklch(0.8 0.13 85);
+  --ds-color-danger: oklch(0.61 0.18 25);
+  --ds-color-info: oklch(0.61 0.12 245);
+  --ds-gradient-site-canvas:
+    radial-gradient(circle at 8% 0%, rgba(255, 222, 208, 0.46) 0%, rgba(255, 222, 208, 0) 30%),
+    radial-gradient(circle at 94% 12%, rgba(219, 235, 201, 0.34) 0%, rgba(219, 235, 201, 0) 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0) 24%);
+}
+
 @theme {
   --font-display: var(--ds-font-display);
   --font-sans: var(--ds-font-sans);

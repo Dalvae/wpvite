@@ -17,6 +17,7 @@ require 'inc/login.php';
 require 'inc/nav_walker.php';
 require 'inc/page-helpers.php';
 require 'inc/post-types.php';
+require 'inc/site-config.php';
 require 'inc/section-helpers.php';
 require 'inc/shortcodes.php';
 require 'inc/svg.php';

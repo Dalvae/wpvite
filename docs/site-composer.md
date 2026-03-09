@@ -1,8 +1,8 @@
 # Site Composer
 
-`site composer` is the first declarative layer for spin-offs.
+`site composer` is now an optional declarative layer for spin-offs.
 
-The goal is to stop starting each project from a blank theme plus ad-hoc decisions. Instead, a site can be described by:
+The goal is to describe a site at a higher level when that abstraction is useful. Instead, a site can be described by:
 
 - site identity
 - design system preset
@@ -39,6 +39,8 @@ Today the composer is a normalizer and validator. It does not yet:
 - switch multiple design-system implementations
 
 It is intentionally honest: one implemented design-system preset, implemented page-family presets, and a clear place to extend the workflow.
+
+If the task is about fast starter edits or fast spin-off setup inside this repository, prefer the pipeline described in `docs/pipeline.md`.
 
 The current implemented preset assumes:
 
