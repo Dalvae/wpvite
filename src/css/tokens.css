@@ -76,8 +76,8 @@
   --ds-color-focus-ring: var(--ds-ref-color-focus-ring);
 
   /* Typography */
-  --ds-font-display: "Fraunces", serif;
-  --ds-font-sans: "Manrope", sans-serif;
+  --ds-font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --ds-font-sans: "Manrope", "Inter", "Segoe UI", system-ui, sans-serif;
   --ds-font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
 
   --ds-step--1: clamp(0.83rem, 0.79rem + 0.2vw, 0.95rem);
@@ -88,6 +88,10 @@
   --ds-step-4: clamp(2.08rem, 1.63rem + 2.06vw, 3.3rem);
   --ds-step-5: clamp(2.48rem, 1.82rem + 3vw, 4.32rem);
 
+  --ds-weight-regular: 400;
+  --ds-weight-medium: 500;
+  --ds-weight-semibold: 600;
+  --ds-weight-bold: 700;
   --ds-leading-tight: 1.08;
   --ds-leading-snug: 1.2;
   --ds-leading-normal: 1.62;
@@ -95,6 +99,57 @@
   --ds-tracking-tight: -0.022em;
   --ds-tracking-ui: 0.08em;
   --ds-measure: 66ch;
+
+  /* Semantic text roles */
+  --ds-type-display-size: var(--ds-step-5);
+  --ds-type-display-line-height: var(--ds-leading-tight);
+  --ds-type-display-weight: var(--ds-weight-semibold);
+  --ds-type-display-tracking: var(--ds-tracking-tight);
+
+  --ds-type-h1-size: var(--ds-step-5);
+  --ds-type-h1-line-height: var(--ds-leading-tight);
+  --ds-type-h1-weight: var(--ds-weight-semibold);
+  --ds-type-h1-tracking: var(--ds-tracking-tight);
+
+  --ds-type-h2-size: var(--ds-step-4);
+  --ds-type-h2-line-height: var(--ds-leading-tight);
+  --ds-type-h2-weight: var(--ds-weight-semibold);
+  --ds-type-h2-tracking: var(--ds-tracking-tight);
+
+  --ds-type-h3-size: var(--ds-step-3);
+  --ds-type-h3-line-height: var(--ds-leading-snug);
+  --ds-type-h3-weight: var(--ds-weight-semibold);
+  --ds-type-h3-tracking: var(--ds-tracking-tight);
+
+  --ds-type-h4-size: var(--ds-step-2);
+  --ds-type-h4-line-height: var(--ds-leading-snug);
+  --ds-type-h4-weight: var(--ds-weight-semibold);
+  --ds-type-h4-tracking: var(--ds-tracking-tight);
+
+  --ds-type-lead-size: var(--ds-step-1);
+  --ds-type-lead-line-height: var(--ds-leading-relaxed);
+  --ds-type-lead-weight: var(--ds-weight-regular);
+  --ds-type-lead-tracking: 0em;
+
+  --ds-type-body-size: var(--ds-step-0);
+  --ds-type-body-line-height: var(--ds-leading-normal);
+  --ds-type-body-weight: var(--ds-weight-regular);
+  --ds-type-body-tracking: 0em;
+
+  --ds-type-body-sm-size: var(--ds-step--1);
+  --ds-type-body-sm-line-height: var(--ds-leading-normal);
+  --ds-type-body-sm-weight: var(--ds-weight-regular);
+  --ds-type-body-sm-tracking: 0em;
+
+  --ds-type-label-size: var(--ds-step--1);
+  --ds-type-label-line-height: var(--ds-leading-snug);
+  --ds-type-label-weight: var(--ds-weight-bold);
+  --ds-type-label-tracking: var(--ds-tracking-ui);
+
+  --ds-type-overline-size: var(--ds-step--1);
+  --ds-type-overline-line-height: var(--ds-leading-snug);
+  --ds-type-overline-weight: var(--ds-weight-semibold);
+  --ds-type-overline-tracking: 0.12em;
 
   /* Spacing */
   --ds-space-0: 0;
@@ -241,10 +296,46 @@
   --text-2xl: var(--ds-step-3);
   --text-3xl: var(--ds-step-4);
   --text-4xl: var(--ds-step-5);
-  --text-h1: var(--ds-step-5);
-  --text-h2: var(--ds-step-4);
-  --text-h3: var(--ds-step-3);
-  --text-h4: var(--ds-step-2);
+  --text-display: var(--ds-type-display-size);
+  --text-display--line-height: var(--ds-type-display-line-height);
+  --text-display--font-weight: var(--ds-type-display-weight);
+  --text-display--letter-spacing: var(--ds-type-display-tracking);
+  --text-h1: var(--ds-type-h1-size);
+  --text-h1--line-height: var(--ds-type-h1-line-height);
+  --text-h1--font-weight: var(--ds-type-h1-weight);
+  --text-h1--letter-spacing: var(--ds-type-h1-tracking);
+  --text-h2: var(--ds-type-h2-size);
+  --text-h2--line-height: var(--ds-type-h2-line-height);
+  --text-h2--font-weight: var(--ds-type-h2-weight);
+  --text-h2--letter-spacing: var(--ds-type-h2-tracking);
+  --text-h3: var(--ds-type-h3-size);
+  --text-h3--line-height: var(--ds-type-h3-line-height);
+  --text-h3--font-weight: var(--ds-type-h3-weight);
+  --text-h3--letter-spacing: var(--ds-type-h3-tracking);
+  --text-h4: var(--ds-type-h4-size);
+  --text-h4--line-height: var(--ds-type-h4-line-height);
+  --text-h4--font-weight: var(--ds-type-h4-weight);
+  --text-h4--letter-spacing: var(--ds-type-h4-tracking);
+  --text-lead: var(--ds-type-lead-size);
+  --text-lead--line-height: var(--ds-type-lead-line-height);
+  --text-lead--font-weight: var(--ds-type-lead-weight);
+  --text-lead--letter-spacing: var(--ds-type-lead-tracking);
+  --text-body: var(--ds-type-body-size);
+  --text-body--line-height: var(--ds-type-body-line-height);
+  --text-body--font-weight: var(--ds-type-body-weight);
+  --text-body--letter-spacing: var(--ds-type-body-tracking);
+  --text-body-sm: var(--ds-type-body-sm-size);
+  --text-body-sm--line-height: var(--ds-type-body-sm-line-height);
+  --text-body-sm--font-weight: var(--ds-type-body-sm-weight);
+  --text-body-sm--letter-spacing: var(--ds-type-body-sm-tracking);
+  --text-label: var(--ds-type-label-size);
+  --text-label--line-height: var(--ds-type-label-line-height);
+  --text-label--font-weight: var(--ds-type-label-weight);
+  --text-label--letter-spacing: var(--ds-type-label-tracking);
+  --text-overline: var(--ds-type-overline-size);
+  --text-overline--line-height: var(--ds-type-overline-line-height);
+  --text-overline--font-weight: var(--ds-type-overline-weight);
+  --text-overline--letter-spacing: var(--ds-type-overline-tracking);
 
   --shadow-panel: var(--ds-shadow-panel);
   --shadow-floating: var(--ds-shadow-floating);

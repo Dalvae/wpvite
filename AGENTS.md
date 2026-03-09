@@ -37,6 +37,14 @@ For roadmap and extraction strategy, read:
 - `docs/section-library.md`
 - `docs/pipeline.md`
 - `docs/site-composer.md`
+- `docs/llm-design-system-guide.md`
+
+Repository-local docs outrank generic external design guidance. Do not rely on global frontend/design skills as the source of truth for this repo.
+
+## Local Skills
+
+- `.codex/skills/wpvite-design-system/SKILL.md`
+  Use this as the repo-local design-system skill for UI work in this starter.
 
 ## Architecture Rules
 
@@ -190,6 +198,18 @@ Reusable work should:
 - avoid brand leakage
 - document the API surface
 - fit one of the architecture layers above
+
+### 12. LLM UI Execution
+
+When implementing UI changes in this repo:
+
+- assume WordPress + PHP templates + Tailwind CSS v4 + daisyUI v5 unless the task explicitly says otherwise
+- treat daisyUI as the component engine, not the public API
+- prefer starter helpers and wrapper classes over repeated raw daisyUI class strings in templates
+- prefer semantic tokens and text roles over ad hoc Tailwind bundles
+- do not import React-first patterns like CVA, `shadcn/ui`, or component APIs that do not fit PHP templates
+- do not add inline styles or page-specific CSS for reusable concerns
+- move branching class logic into helpers when templates start getting noisy
 
 ## Default Decision Heuristics
 

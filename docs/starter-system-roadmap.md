@@ -59,6 +59,7 @@ Source of truth for brand-agnostic design language.
 - token primitives
 - semantic aliases
 - typography scale
+- semantic text roles for display, headings, body, and labels
 - spacing scale
 - radii
 - motion
@@ -212,6 +213,7 @@ Deliverables:
 
 - add layered token architecture to `wpvite`
 - expand `design-tokens.json` to include typography, spacing, radii, elevation, motion
+- add semantic typography role tokens bridged into Tailwind `text-*` utilities and reusable CSS helpers
 - split base CSS into:
   - `tokens.css`
   - `design-system.css`

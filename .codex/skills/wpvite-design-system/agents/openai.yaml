@@ -1,0 +1,4 @@
+interface:
+  display_name: "WPVite Design System"
+  short_description: "Repo-local WordPress UI system rules"
+  default_prompt: "Use $wpvite-design-system to implement reusable UI in this WordPress starter."

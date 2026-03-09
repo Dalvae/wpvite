@@ -186,9 +186,10 @@
 
 .ui-section-kicker {
   margin: 0;
-  font-size: var(--ds-step--1);
-  font-weight: 700;
-  letter-spacing: var(--ds-tracking-ui);
+  font-size: var(--ds-type-overline-size);
+  line-height: var(--ds-type-overline-line-height);
+  font-weight: var(--ds-type-overline-weight);
+  letter-spacing: var(--ds-type-overline-tracking);
   text-transform: uppercase;
   color: var(--ds-color-muted);
 }
@@ -223,12 +224,14 @@
 .ui-section-intro {
   margin: 0;
   max-inline-size: min(100%, var(--ds-layout-reading-max));
-  line-height: var(--ds-leading-relaxed);
+  line-height: var(--ds-type-lead-line-height);
 }
 
 .ui-section-intro--page,
 .ui-section-intro--lead {
-  font-size: var(--ds-step-1);
+  font-size: var(--ds-type-lead-size);
+  font-weight: var(--ds-type-lead-weight);
+  letter-spacing: var(--ds-type-lead-tracking);
 }
 
 .ui-section-intro--muted {
@@ -259,8 +262,10 @@
 
 .entry-meta {
   margin: 0;
-  font-size: var(--ds-step--1);
-  letter-spacing: 0.04em;
+  font-size: var(--ds-type-label-size);
+  line-height: var(--ds-type-label-line-height);
+  font-weight: var(--ds-type-label-weight);
+  letter-spacing: var(--ds-type-label-tracking);
   text-transform: uppercase;
   color: var(--ds-color-muted);
 }
@@ -289,8 +294,10 @@
 
 .stat-tile__label {
   max-inline-size: 20ch;
-  font-size: var(--ds-step--1);
-  letter-spacing: 0.04em;
+  font-size: var(--ds-type-label-size);
+  line-height: var(--ds-type-label-line-height);
+  font-weight: var(--ds-type-label-weight);
+  letter-spacing: var(--ds-type-label-tracking);
   text-transform: uppercase;
   color: var(--ds-color-muted);
 }

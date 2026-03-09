@@ -76,6 +76,7 @@ pnpm dev                     # start Vite dev server (HMR)
 - Tokens: `src/css/tokens.css`
 - daisyUI theme adapter: `src/css/daisyui-theme.css`
 - Foundations and primitives: `src/css/design-system.css`, `src/css/ui-components.css`, `src/css/page-primitives.css`
+- Semantic typography roles: Tailwind `text-display` / `text-h1` / `text-body` / `text-label` tokens plus reusable `.type-*` helpers in `src/css/tokens.css` and `src/css/design-system.css`
 - JSON tokens (DTCG-like): `src/tokens/design-tokens.json`
 - Documentation: `DESIGN_SYSTEM.md`
 
