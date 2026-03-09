@@ -10,6 +10,7 @@
   "devDependencies": {
     "@kucrut/vite-for-wp": "^0.12.0",
     "@tailwindcss/vite": "^4.1.18",
+    "daisyui": "^5.5.19",
     "tailwindcss": "^4.1.18",
     "vite": "^7.3.1",
     "vite-plugin-live-reload": "^3.0.5"
@@ -18,6 +19,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "compose:site": "node scripts/compose-site.mjs",
+    "compose:site:write": "node scripts/compose-site.mjs --write",
     "setup": "node setup.js",
     "wp": "docker compose --profile cli run --rm wpcli wp"
   },

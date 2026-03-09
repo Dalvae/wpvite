@@ -1,0 +1,201 @@
+:root {
+  /* Color primitives */
+  --ds-ref-color-paper-50: oklch(0.985 0.008 95);
+  --ds-ref-color-paper-100: oklch(0.968 0.012 95);
+  --ds-ref-color-paper-200: oklch(0.945 0.014 95);
+  --ds-ref-color-paper-300: oklch(0.915 0.015 95);
+  --ds-ref-color-ink-900: oklch(0.24 0.025 255);
+  --ds-ref-color-ink-700: oklch(0.36 0.024 255);
+  --ds-ref-color-ink-500: oklch(0.5 0.02 255);
+  --ds-ref-color-sea-500: oklch(0.63 0.13 230);
+  --ds-ref-color-sea-600: oklch(0.56 0.13 230);
+  --ds-ref-color-sea-200: oklch(0.92 0.03 230);
+  --ds-ref-color-gold-400: oklch(0.83 0.11 85);
+  --ds-ref-color-gold-500: oklch(0.76 0.11 85);
+  --ds-ref-color-green-500: oklch(0.68 0.13 160);
+  --ds-ref-color-red-500: oklch(0.63 0.18 25);
+  --ds-ref-color-white: #fff;
+  --ds-ref-color-black: #000;
+  --ds-ref-color-transparent: transparent;
+
+  --ds-ref-color-overlay-scrim: rgba(19, 24, 38, 0.52);
+  --ds-ref-color-surface-overlay: rgba(255, 255, 255, 0.82);
+  --ds-ref-color-surface-overlay-strong: rgba(255, 255, 255, 0.92);
+  --ds-ref-color-border-subtle: rgba(52, 64, 84, 0.14);
+  --ds-ref-color-border-strong: rgba(52, 64, 84, 0.24);
+  --ds-ref-color-primary-soft: rgba(91, 142, 215, 0.14);
+  --ds-ref-color-success-soft: rgba(67, 160, 125, 0.14);
+  --ds-ref-color-warning-soft: rgba(214, 166, 54, 0.18);
+  --ds-ref-color-danger-soft: rgba(211, 91, 91, 0.14);
+  --ds-ref-color-info-soft: rgba(91, 142, 215, 0.12);
+  --ds-ref-color-focus-ring: rgba(91, 142, 215, 0.28);
+
+  /* Semantic colors */
+  --ds-color-background: var(--ds-ref-color-paper-50);
+  --ds-color-background-muted: var(--ds-ref-color-paper-100);
+  --ds-color-surface: var(--ds-ref-color-white);
+  --ds-color-surface-elevated: var(--ds-ref-color-surface-overlay);
+  --ds-color-surface-strong: var(--ds-ref-color-surface-overlay-strong);
+  --ds-color-surface-tint: var(--ds-ref-color-sea-200);
+  --ds-color-foreground: var(--ds-ref-color-ink-900);
+  --ds-color-foreground-strong: color-mix(in srgb, var(--ds-ref-color-ink-900) 92%, var(--ds-ref-color-black) 8%);
+  --ds-color-muted: var(--ds-ref-color-ink-500);
+  --ds-color-line: var(--ds-ref-color-border-subtle);
+  --ds-color-line-strong: var(--ds-ref-color-border-strong);
+
+  --ds-color-primary: var(--ds-ref-color-sea-500);
+  --ds-color-primary-hover: var(--ds-ref-color-sea-600);
+  --ds-color-primary-soft: var(--ds-ref-color-primary-soft);
+  --ds-color-secondary: var(--ds-ref-color-ink-900);
+  --ds-color-secondary-hover: var(--ds-ref-color-ink-700);
+  --ds-color-tertiary: var(--ds-ref-color-gold-400);
+  --ds-color-tertiary-hover: var(--ds-ref-color-gold-500);
+  --ds-color-success: var(--ds-ref-color-green-500);
+  --ds-color-success-soft: var(--ds-ref-color-success-soft);
+  --ds-color-warning: var(--ds-ref-color-gold-500);
+  --ds-color-warning-soft: var(--ds-ref-color-warning-soft);
+  --ds-color-danger: var(--ds-ref-color-red-500);
+  --ds-color-danger-soft: var(--ds-ref-color-danger-soft);
+  --ds-color-info: var(--ds-ref-color-sea-500);
+  --ds-color-info-soft: var(--ds-ref-color-info-soft);
+
+  --ds-color-on-primary: var(--ds-ref-color-white);
+  --ds-color-on-secondary: var(--ds-ref-color-white);
+  --ds-color-on-tertiary: var(--ds-ref-color-ink-900);
+  --ds-color-on-success: var(--ds-ref-color-white);
+  --ds-color-on-warning: var(--ds-ref-color-ink-900);
+  --ds-color-on-danger: var(--ds-ref-color-white);
+
+  /* Surfaces and gradients */
+  --ds-gradient-site-canvas:
+    radial-gradient(circle at 15% 0%, rgba(216, 231, 251, 0.72) 0%, rgba(216, 231, 251, 0) 34%),
+    radial-gradient(circle at 92% 8%, rgba(255, 234, 198, 0.48) 0%, rgba(255, 234, 198, 0) 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0) 24%);
+
+  --ds-color-overlay-scrim: var(--ds-ref-color-overlay-scrim);
+  --ds-color-focus-ring: var(--ds-ref-color-focus-ring);
+
+  /* Typography */
+  --ds-font-display: "Fraunces", serif;
+  --ds-font-sans: "Manrope", sans-serif;
+  --ds-font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+
+  --ds-step--1: clamp(0.83rem, 0.79rem + 0.2vw, 0.95rem);
+  --ds-step-0: clamp(1rem, 0.95rem + 0.28vw, 1.15rem);
+  --ds-step-1: clamp(1.18rem, 1.08rem + 0.48vw, 1.46rem);
+  --ds-step-2: clamp(1.42rem, 1.24rem + 0.86vw, 1.92rem);
+  --ds-step-3: clamp(1.72rem, 1.42rem + 1.4vw, 2.56rem);
+  --ds-step-4: clamp(2.08rem, 1.63rem + 2.06vw, 3.3rem);
+  --ds-step-5: clamp(2.48rem, 1.82rem + 3vw, 4.32rem);
+
+  --ds-leading-tight: 1.08;
+  --ds-leading-snug: 1.2;
+  --ds-leading-normal: 1.62;
+  --ds-leading-relaxed: 1.74;
+  --ds-tracking-tight: -0.022em;
+  --ds-tracking-ui: 0.08em;
+  --ds-measure: 66ch;
+
+  /* Spacing */
+  --ds-space-0: 0;
+  --ds-space-1: 0.25rem;
+  --ds-space-2: 0.5rem;
+  --ds-space-3: 0.75rem;
+  --ds-space-4: 1rem;
+  --ds-space-5: 1.25rem;
+  --ds-space-6: 1.5rem;
+  --ds-space-7: 2rem;
+  --ds-space-8: 3rem;
+  --ds-space-9: 4rem;
+  --ds-space-10: 5rem;
+  --ds-space-11: 6rem;
+  --ds-space-12: 7rem;
+
+  /* Layout */
+  --ds-layout-shell-max: 78rem;
+  --ds-layout-reading-max: 68ch;
+  --ds-layout-heading-max: 56rem;
+  --ds-layout-sidebar-max: 20rem;
+  --ds-layout-scene-gap: clamp(1.5rem, 2vw, 3rem);
+  --ds-layout-card-gap: clamp(1.25rem, 1.8vw, 2rem);
+
+  /* Radius */
+  --ds-radius-none: 0;
+  --ds-radius-xs: 0.35rem;
+  --ds-radius-sm: 0.6rem;
+  --ds-radius-md: 0.9rem;
+  --ds-radius-lg: 1.25rem;
+  --ds-radius-xl: 1.6rem;
+  --ds-radius-2xl: 2rem;
+  --ds-radius-pill: 999px;
+  --ds-radius-card: var(--ds-radius-xl);
+  --ds-radius-button-sm: var(--ds-radius-sm);
+  --ds-radius-button-md: var(--ds-radius-md);
+  --ds-radius-button-lg: var(--ds-radius-lg);
+
+  /* Elevation */
+  --ds-shadow-none: none;
+  --ds-shadow-soft: 0 10px 28px rgba(17, 24, 39, 0.08);
+  --ds-shadow-panel: 0 18px 48px rgba(17, 24, 39, 0.12);
+  --ds-shadow-floating: 0 24px 70px rgba(17, 24, 39, 0.16);
+  --ds-shadow-topbar: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+  /* Motion */
+  --ds-motion-instant: 1ms;
+  --ds-motion-fast: 160ms;
+  --ds-motion-base: 220ms;
+  --ds-motion-slow: 320ms;
+  --ds-motion-stagger: 70ms;
+  --ds-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ds-ease-emphasis: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --ds-z-content: 1;
+  --ds-z-topbar: 80;
+  --ds-z-overlay: 999;
+  --ds-z-drawer: 1000;
+}
+
+@theme {
+  --font-display: var(--ds-font-display);
+  --font-sans: var(--ds-font-sans);
+  --font-mono: var(--ds-font-mono);
+
+  --color-primary: var(--ds-color-primary);
+  --color-primary-hover: var(--ds-color-primary-hover);
+  --color-secondary: var(--ds-color-secondary);
+  --color-secondary-hover: var(--ds-color-secondary-hover);
+  --color-tertiary: var(--ds-color-tertiary);
+  --color-tertiary-hover: var(--ds-color-tertiary-hover);
+  --color-success: var(--ds-color-success);
+  --color-warning: var(--ds-color-warning);
+  --color-danger: var(--ds-color-danger);
+  --color-info: var(--ds-color-info);
+  --color-background: var(--ds-color-background);
+  --color-foreground: var(--ds-color-foreground);
+  --color-muted: var(--ds-color-muted);
+  --color-surface: var(--ds-color-surface);
+  --color-surface-muted: var(--ds-color-background-muted);
+  --color-border: var(--ds-color-line);
+
+  --radius-button-sm: var(--ds-radius-button-sm);
+  --radius-button-md: var(--ds-radius-button-md);
+  --radius-button-lg: var(--ds-radius-button-lg);
+  --radius-card: var(--ds-radius-card);
+  --radius-pill: var(--ds-radius-pill);
+
+  --text-xs: var(--ds-step--1);
+  --text-sm: var(--ds-step-0);
+  --text-base: var(--ds-step-0);
+  --text-lg: var(--ds-step-1);
+  --text-xl: var(--ds-step-2);
+  --text-2xl: var(--ds-step-3);
+  --text-3xl: var(--ds-step-4);
+  --text-4xl: var(--ds-step-5);
+  --text-h1: var(--ds-step-5);
+  --text-h2: var(--ds-step-4);
+  --text-h3: var(--ds-step-3);
+  --text-h4: var(--ds-step-2);
+
+  --shadow-panel: var(--ds-shadow-panel);
+  --shadow-floating: var(--ds-shadow-floating);
+}

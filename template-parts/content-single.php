@@ -1,11 +1,18 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(starter_get_page_surface_classes('content')); ?>>
+    <?php
+    get_template_part(
+        'components/entry-header',
+        null,
+        array(
+            'title' => get_the_title(),
+            'title_tag' => 'h1',
+            'url' => get_permalink(),
+            'meta' => get_the_date(),
+        )
+    );
+    ?>
 
-    <header class="entry-header mb-4">
-        <?php the_title( sprintf( '<h1 class="entry-title text-2xl lg:text-5xl font-extrabold leading-tight mb-1"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
-        <time datetime="<?php echo get_the_date( 'c' ); ?>" itemprop="datePublished" class="text-sm text-gray-700"><?php echo get_the_date(); ?></time>
-    </header>
-
-    <div class="entry-content">
+    <div class="entry-content page-prose">
         <?php the_content(); ?>
 
         <?php

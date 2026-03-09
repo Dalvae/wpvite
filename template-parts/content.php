@@ -1,19 +1,26 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'mb-12' ); ?>>
-
-    <header class="entry-header mb-4">
-        <?php the_title( sprintf( '<h2 class="entry-title text-2xl md:text-3xl font-extrabold leading-tight mb-1"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-        <time datetime="<?php echo get_the_date( 'c' ); ?>" itemprop="datePublished" class="text-sm text-gray-700"><?php echo get_the_date(); ?></time>
-    </header>
+<article id="post-<?php the_ID(); ?>" <?php post_class(starter_get_page_surface_classes('content')); ?>>
+    <?php
+    get_template_part(
+        'components/entry-header',
+        null,
+        array(
+            'title' => get_the_title(),
+            'title_tag' => 'h2',
+            'url' => get_permalink(),
+            'meta' => get_the_date(),
+        )
+    );
+    ?>
 
     <?php if ( is_search() || is_archive() ) : ?>
 
-        <div class="entry-summary">
+        <div class="entry-summary page-prose">
             <?php the_excerpt(); ?>
         </div>
 
     <?php else : ?>
 
-        <div class="entry-content">
+        <div class="entry-content page-prose">
             <?php
             /* translators: %s: Name of current post */
             the_content(

@@ -29,6 +29,8 @@ pnpm dev                     # start Vite dev server (HMR)
 |---------|-------------|
 | `pnpm dev` | Start Vite dev server with HMR |
 | `pnpm build` | Build production assets to `dist/` |
+| `pnpm compose:site <manifest>` | Validate and normalize a site composition manifest |
+| `pnpm compose:site:write <manifest>` | Write normalized site composition output to `tmp/` |
 | `pnpm wp <command>` | Run WP-CLI (e.g. `pnpm wp theme list`) |
 | `pnpm setup` | Full setup from scratch |
 
@@ -36,6 +38,7 @@ pnpm dev                     # start Vite dev server (HMR)
 
 - **Vite 7** — build tool + HMR via [@kucrut/vite-for-wp](https://github.com/kucrut/vite-for-wp)
 - **Tailwind CSS 4** — CSS-first config, no `tailwind.config.js` needed
+- **daisyUI 5** — central component engine, themed from local design tokens
 - **AlpineJS** — lightweight DOM interactivity
 - **Turbo** — SPA-like navigation
 - **Docker** — WordPress + MariaDB + WP-CLI
@@ -68,9 +71,19 @@ pnpm dev                     # start Vite dev server (HMR)
 
 ## Design System Base
 
-- CSS tokens and primitives: `src/css/design-system.css`
+- Tokens: `src/css/tokens.css`
+- daisyUI theme adapter: `src/css/daisyui-theme.css`
+- Foundations and primitives: `src/css/design-system.css`, `src/css/ui-components.css`, `src/css/page-primitives.css`
 - JSON tokens (DTCG-like): `src/tokens/design-tokens.json`
 - Documentation: `DESIGN_SYSTEM.md`
+
+## Starter Roadmap
+
+- System roadmap: `docs/starter-system-roadmap.md`
+- Extraction map from `infinitalent`: `docs/infinitalent-extraction-map.md`
+- Section library: `docs/section-library.md`
+- Site composer: `docs/site-composer.md`
+- Contributor/agent guidance: `AGENTS.md`
 
 ## Configuration
 

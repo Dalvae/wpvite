@@ -1,18 +1,34 @@
-document.addEventListener("turbo:load", function () {
+const toggleMobileMenu = (shouldOpen = null) => {
+    const page = document.querySelector('#page');
+    if (!page) {
+        return;
+    }
 
-    const toggles = document.querySelectorAll('.mobile-menu-toggle');
-    toggles.forEach(toggle => {
+    if (shouldOpen === null) {
+        page.classList.toggle('mobile-menu-open');
+        return;
+    }
 
-        toggle.addEventListener('click', function (e) {
+    page.classList.toggle('mobile-menu-open', shouldOpen);
+};
+
+if (!window.__starterMobileMenuBound) {
+    window.__starterMobileMenuBound = true;
+
+    document.addEventListener('click', function (e) {
+        const toggle = e.target.closest('.mobile-menu-toggle');
+        if (toggle) {
             e.preventDefault();
-            document.querySelector('#page').classList.toggle('mobile-menu-open');
-        });
-    });
+            toggleMobileMenu();
+            return;
+        }
 
-    document.body.addEventListener('click', function (e) {
-        if (!e.target.closest('.mobile-menu-toggle') && !e.target.closest('#mobile-menu-container')) {
-            document.querySelector('#page').classList.remove('mobile-menu-open');
+        if (!e.target.closest('#mobile-menu-container')) {
+            toggleMobileMenu(false);
         }
     });
 
-});
+    document.addEventListener('turbo:load', function () {
+        toggleMobileMenu(false);
+    });
+}

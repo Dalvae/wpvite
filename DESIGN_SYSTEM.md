@@ -1,83 +1,93 @@
 # Design System Base (WPVite)
 
-Base inicial para estandarizar futuros themes WordPress con una sola fuente de verdad.
+Base para convertir este theme en un starter reusable para spin-offs WordPress.
 
-## 1) Tokens semánticos
+La decisión actual es:
 
-- CSS source of truth: `src/css/design-system.css`
-- Machine-readable source of truth: `src/tokens/design-tokens.json`
+- `daisyUI` es el motor base de componentes
+- los tokens locales siguen siendo la fuente de verdad
+- los helpers PHP y page families siguen siendo la capa de composición propia
 
-Convenciones:
+## Layering
 
-- Nombres semánticos (`primary`, `warning`, `danger`, `surface`, `foreground`), no nombres por color literal (`blue500`).
-- Tokens globales prefijados con `--ds-` para evitar choques.
-- Mapping a Tailwind v4 vía `@theme` para usar utilidades tipo `bg-primary`, `text-foreground`, `rounded-button-md`.
+La arquitectura visual ahora se divide en cuatro capas:
 
-## 2) Radius en un solo lugar
+- `src/css/tokens.css`
+  Source of truth para color, typography, spacing, layout, radius, shadow y motion.
+- `src/css/daisyui-theme.css`
+  Adapter entre nuestros tokens y el theme global `starterspin` de daisyUI.
+- `src/css/design-system.css`
+  Baselines globales, tipografía, accesibilidad y prose.
+- `src/css/ui-components.css`
+  Overrides y adapters finos encima de daisyUI para botones, badges, panels, brand lockup, contact list, section header y stat tiles.
+- `src/css/page-primitives.css`
+  Shells, scenes, grids, cards, navigation chrome y page-family composition rules.
 
-Definidos en `:root`:
+La fuente machine-readable sigue siendo:
 
-- `--ds-radius-button-sm`
-- `--ds-radius-button-md`
-- `--ds-radius-button-lg`
-- `--ds-radius-pill`
-- `--ds-radius-card`
+- `src/tokens/design-tokens.json`
 
-El componente PHP de botón usa estas variantes por contrato:
+## Naming Rules
 
-- `variant`: `primary | secondary | tertiary | warning | success | danger | ghost`
-- `size`: `sm | md | lg`
-- `radius`: `sm | md | lg | pill`
+- Tokens globales con prefijo `--ds-`
+- Helpers PHP compartidos con prefijo `starter_`
+- Nada de nombres amarrados a una marca o cliente en la base reusable
 
-## 3) Tipografía: Display + Sans + escala fluida
+## PHP Contracts
 
-Pairing elegido:
+Helpers compartidos:
 
-- Display: `Fraunces`
-- Sans: `Manrope`
+- `inc/icons.php`
+- `inc/template-helpers.php`
+- `inc/page-helpers.php`
 
-Escala con `clamp()` y progresión inspirada en Fibonacci/razón áurea (suavizada para UI).
+Primitives compartidas:
 
-Idea:
+- `components/button.php`
+- `components/icon-button.php`
+- `components/brand-lockup.php`
+- `components/contact-list.php`
+- `components/link-row.php`
+- `components/stat-tile.php`
+- `components/section-header.php`
+- `components/section-scene.php`
 
-- Fibonacci converge hacia `phi` (~1.618), pero ese salto suele ser agresivo para interfaces.
-- Se usa una progresión más controlada con pasos fluidos por viewport para mantener jerarquía sin romper layout.
+## Page Primitives
 
-Roles:
+Templates reutilizables:
 
-- Body: `--ds-step-0`
-- H1: `--ds-step-5`
-- H2: `--ds-step-4`
-- H3: `--ds-step-3`
-- H4: `--ds-step-2`
-- H5: `--ds-step-1`
-- H6: `--ds-step-0`
+- `template-parts/page/intro.php`
+- `template-parts/page/empty-state.php`
+- `template-parts/page/summary-card.php`
+- `template-parts/page/summary-grid.php`
+- `template-parts/page/contact-panel.php`
 
-## 4) Design system para LLMs
+Page families iniciales:
 
-Para que IA/código automático lo use bien:
+- `template-parts/page-families/services-hub.php`
+- `template-parts/page-families/about-detail.php`
+- `template-parts/page-families/service-detail.php`
+- `template-parts/page-families/contact-detail.php`
 
-- Mantener tokens en JSON plano con estructura consistente (DTCG style: `$type`, `$value`).
-- No duplicar semánticas (evitar `brandPrimary`, `mainPrimary`, `primaryColor` para el mismo rol).
-- Mantener aliases explícitos (ej. `roles.h1 -> fontSize.step5`).
-- Versionar cambios (`meta.version`) y romper contrato solo en major.
+## Icon Policy
 
-Ejemplo de instrucción para agentes:
+- Nada de SVG hardcoded dentro de helpers PHP para el sistema base
+- Íconos locales en `assets/icons/phosphor/`
+- API única: `starter_icon()`
+- Alias permitidos a nombres reales de Phosphor solo como conveniencia (`mail`, `menu`, `globe`, etc.)
+
+## Component Policy
+
+- Usa daisyUI para primitives base: `btn`, `badge`, `card`, `input`, `textarea`, `select`
+- Usa helpers `starter_*` para no acoplar templates directo al vocabulario de daisyUI
+- Si el theme de daisyUI cambia, el contrato de los templates debe seguir estable
+
+## Design System for Agents
+
+Regla operativa:
 
 ```txt
-Usa únicamente tokens semánticos desde src/tokens/design-tokens.json.
-No inventes colores/radius/fuentes fuera de los tokens existentes.
-Si falta un token, proponlo como cambio al design system.
-```
-
-## 5) Uso rápido en templates
-
-```php
-<?php get_template_part('components/button', null, [
-  'text' => 'Cotizar',
-  'href' => '/contacto',
-  'variant' => 'primary',
-  'size' => 'md',
-  'radius' => 'pill',
-]); ?>
+Usa tokens y helpers existentes antes de inventar clases o valores.
+Si una nueva abstracción es reusable, súbela de template a primitive o helper.
+Si un cambio es de marca, mantenlo fuera del core reusable.
 ```

@@ -1,20 +1,13 @@
 <?php get_header(); ?>
 
-    <div class="container mx-auto my-8 px-4">
-
-        <?php if ( have_posts() ) : ?>
-            <?php
-            while ( have_posts() ) :
-                the_post();
-                ?>
-
-                <?php get_template_part( 'template-parts/content', get_post_format() ); ?>
-
+<div class="<?php echo esc_attr(starter_get_page_shell_classes()); ?>">
+    <?php if (have_posts()) : ?>
+        <div class="page-collection page-collection--stack">
+            <?php while (have_posts()) : the_post(); ?>
+                <?php get_template_part('template-parts/content', get_post_format()); ?>
             <?php endwhile; ?>
+        </div>
+    <?php endif; ?>
+</div>
 
-        <?php endif; ?>
-
-    </div>
-
-<?php
-get_footer();
+<?php get_footer(); ?>

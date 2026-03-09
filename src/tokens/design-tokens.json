@@ -1,82 +1,102 @@
 {
   "$schema": "https://www.designtokens.org/TR/drafts/format/",
   "meta": {
-    "name": "wpvite-design-system",
-    "version": "1.0.0",
+    "name": "wpvite-starter-system",
+    "version": "2.0.0",
     "principles": [
       "semantic-naming",
-      "single-source-of-truth",
+      "layered-foundations",
+      "starter-friendly-contracts",
       "llm-friendly-structure"
     ]
   },
   "color": {
-    "primary": { "$type": "color", "$value": "oklch(0.56 0.21 262)" },
-    "primaryHover": { "$type": "color", "$value": "oklch(0.49 0.21 262)" },
-    "secondary": { "$type": "color", "$value": "oklch(0.64 0.14 195)" },
-    "secondaryHover": { "$type": "color", "$value": "oklch(0.57 0.14 195)" },
-    "tertiary": { "$type": "color", "$value": "oklch(0.74 0.15 88)" },
-    "tertiaryHover": { "$type": "color", "$value": "oklch(0.67 0.15 88)" },
-    "success": { "$type": "color", "$value": "oklch(0.66 0.17 152)" },
-    "successHover": { "$type": "color", "$value": "oklch(0.59 0.17 152)" },
-    "warning": { "$type": "color", "$value": "oklch(0.79 0.16 84)" },
-    "warningHover": { "$type": "color", "$value": "oklch(0.72 0.16 84)" },
-    "danger": { "$type": "color", "$value": "oklch(0.63 0.22 25)" },
-    "dangerHover": { "$type": "color", "$value": "oklch(0.56 0.22 25)" },
-    "info": { "$type": "color", "$value": "oklch(0.66 0.15 242)" },
-    "background": { "$type": "color", "$value": "oklch(0.98 0.004 258)" },
-    "surface": { "$type": "color", "$value": "oklch(1 0 0)" },
-    "surfaceMuted": { "$type": "color", "$value": "oklch(0.95 0.01 258)" },
-    "foreground": { "$type": "color", "$value": "oklch(0.23 0.02 258)" },
-    "muted": { "$type": "color", "$value": "oklch(0.48 0.025 258)" },
-    "border": { "$type": "color", "$value": "oklch(0.88 0.01 258)" },
-    "onPrimary": { "$type": "color", "$value": "oklch(0.99 0.004 258)" },
-    "onSecondary": { "$type": "color", "$value": "oklch(0.99 0.004 258)" },
-    "onTertiary": { "$type": "color", "$value": "oklch(0.22 0.02 88)" },
-    "onSuccess": { "$type": "color", "$value": "oklch(0.99 0.004 258)" },
-    "onWarning": { "$type": "color", "$value": "oklch(0.22 0.02 88)" },
-    "onDanger": { "$type": "color", "$value": "oklch(0.99 0.004 258)" }
-  },
-  "radius": {
-    "buttonSm": { "$type": "dimension", "$value": "0.5rem" },
-    "buttonMd": { "$type": "dimension", "$value": "0.75rem" },
-    "buttonLg": { "$type": "dimension", "$value": "1rem" },
-    "card": { "$type": "dimension", "$value": "1rem" },
-    "pill": { "$type": "dimension", "$value": "9999px" }
+    "background": { "$type": "color", "$value": "oklch(0.985 0.008 95)" },
+    "backgroundMuted": { "$type": "color", "$value": "oklch(0.968 0.012 95)" },
+    "surface": { "$type": "color", "$value": "#ffffff" },
+    "foreground": { "$type": "color", "$value": "oklch(0.24 0.025 255)" },
+    "muted": { "$type": "color", "$value": "oklch(0.5 0.02 255)" },
+    "line": { "$type": "color", "$value": "rgba(52, 64, 84, 0.14)" },
+    "primary": { "$type": "color", "$value": "oklch(0.63 0.13 230)" },
+    "primaryHover": { "$type": "color", "$value": "oklch(0.56 0.13 230)" },
+    "primarySoft": { "$type": "color", "$value": "rgba(91, 142, 215, 0.14)" },
+    "secondary": { "$type": "color", "$value": "oklch(0.24 0.025 255)" },
+    "secondaryHover": { "$type": "color", "$value": "oklch(0.36 0.024 255)" },
+    "tertiary": { "$type": "color", "$value": "oklch(0.83 0.11 85)" },
+    "tertiaryHover": { "$type": "color", "$value": "oklch(0.76 0.11 85)" },
+    "success": { "$type": "color", "$value": "oklch(0.68 0.13 160)" },
+    "warning": { "$type": "color", "$value": "oklch(0.76 0.11 85)" },
+    "danger": { "$type": "color", "$value": "oklch(0.63 0.18 25)" },
+    "info": { "$type": "color", "$value": "oklch(0.63 0.13 230)" }
   },
   "typography": {
     "fontFamily": {
       "display": {
         "$type": "fontFamily",
-        "$value": ["Fraunces", "Iowan Old Style", "Palatino Linotype", "serif"]
+        "$value": ["Fraunces", "serif"]
       },
       "sans": {
         "$type": "fontFamily",
-        "$value": ["Manrope", "Avenir Next", "Segoe UI", "sans-serif"]
+        "$value": ["Manrope", "sans-serif"]
       }
     },
-    "lineHeight": {
-      "tight": { "$type": "number", "$value": 1.1 },
-      "snug": { "$type": "number", "$value": 1.25 },
-      "normal": { "$type": "number", "$value": 1.55 }
-    },
     "fontSize": {
-      "step-2": { "$type": "dimension", "$value": "clamp(0.69rem, 0.67rem + 0.12vw, 0.76rem)" },
       "step-1": { "$type": "dimension", "$value": "clamp(0.83rem, 0.79rem + 0.2vw, 0.95rem)" },
-      "step0": { "$type": "dimension", "$value": "clamp(1rem, 0.94rem + 0.29vw, 1.18rem)" },
-      "step1": { "$type": "dimension", "$value": "clamp(1.2rem, 1.11rem + 0.45vw, 1.48rem)" },
-      "step2": { "$type": "dimension", "$value": "clamp(1.44rem, 1.3rem + 0.7vw, 1.88rem)" },
-      "step3": { "$type": "dimension", "$value": "clamp(1.73rem, 1.5rem + 1.12vw, 2.42rem)" },
-      "step4": { "$type": "dimension", "$value": "clamp(2.07rem, 1.73rem + 1.71vw, 3.14rem)" },
-      "step5": { "$type": "dimension", "$value": "clamp(2.49rem, 1.98rem + 2.55vw, 4.08rem)" }
+      "step0": { "$type": "dimension", "$value": "clamp(1rem, 0.95rem + 0.28vw, 1.15rem)" },
+      "step1": { "$type": "dimension", "$value": "clamp(1.18rem, 1.08rem + 0.48vw, 1.46rem)" },
+      "step2": { "$type": "dimension", "$value": "clamp(1.42rem, 1.24rem + 0.86vw, 1.92rem)" },
+      "step3": { "$type": "dimension", "$value": "clamp(1.72rem, 1.42rem + 1.4vw, 2.56rem)" },
+      "step4": { "$type": "dimension", "$value": "clamp(2.08rem, 1.63rem + 2.06vw, 3.3rem)" },
+      "step5": { "$type": "dimension", "$value": "clamp(2.48rem, 1.82rem + 3vw, 4.32rem)" }
+    },
+    "lineHeight": {
+      "tight": { "$type": "number", "$value": 1.08 },
+      "snug": { "$type": "number", "$value": 1.2 },
+      "normal": { "$type": "number", "$value": 1.62 },
+      "relaxed": { "$type": "number", "$value": 1.74 }
     },
     "roles": {
       "body": { "$type": "dimension", "$value": "{typography.fontSize.step0}" },
       "h1": { "$type": "dimension", "$value": "{typography.fontSize.step5}" },
       "h2": { "$type": "dimension", "$value": "{typography.fontSize.step4}" },
       "h3": { "$type": "dimension", "$value": "{typography.fontSize.step3}" },
-      "h4": { "$type": "dimension", "$value": "{typography.fontSize.step2}" },
-      "h5": { "$type": "dimension", "$value": "{typography.fontSize.step1}" },
-      "h6": { "$type": "dimension", "$value": "{typography.fontSize.step0}" }
+      "h4": { "$type": "dimension", "$value": "{typography.fontSize.step2}" }
     }
+  },
+  "space": {
+    "1": { "$type": "dimension", "$value": "0.25rem" },
+    "2": { "$type": "dimension", "$value": "0.5rem" },
+    "3": { "$type": "dimension", "$value": "0.75rem" },
+    "4": { "$type": "dimension", "$value": "1rem" },
+    "5": { "$type": "dimension", "$value": "1.25rem" },
+    "6": { "$type": "dimension", "$value": "1.5rem" },
+    "7": { "$type": "dimension", "$value": "2rem" },
+    "8": { "$type": "dimension", "$value": "3rem" },
+    "9": { "$type": "dimension", "$value": "4rem" },
+    "10": { "$type": "dimension", "$value": "5rem" }
+  },
+  "radius": {
+    "sm": { "$type": "dimension", "$value": "0.6rem" },
+    "md": { "$type": "dimension", "$value": "0.9rem" },
+    "lg": { "$type": "dimension", "$value": "1.25rem" },
+    "xl": { "$type": "dimension", "$value": "1.6rem" },
+    "card": { "$type": "dimension", "$value": "1.6rem" },
+    "pill": { "$type": "dimension", "$value": "999px" }
+  },
+  "shadow": {
+    "soft": { "$type": "shadow", "$value": "0 10px 28px rgba(17, 24, 39, 0.08)" },
+    "panel": { "$type": "shadow", "$value": "0 18px 48px rgba(17, 24, 39, 0.12)" },
+    "floating": { "$type": "shadow", "$value": "0 24px 70px rgba(17, 24, 39, 0.16)" }
+  },
+  "motion": {
+    "fast": { "$type": "duration", "$value": "160ms" },
+    "base": { "$type": "duration", "$value": "220ms" },
+    "slow": { "$type": "duration", "$value": "320ms" },
+    "stagger": { "$type": "duration", "$value": "70ms" }
+  },
+  "layout": {
+    "shellMax": { "$type": "dimension", "$value": "78rem" },
+    "readingMax": { "$type": "dimension", "$value": "68ch" },
+    "headingMax": { "$type": "dimension", "$value": "56rem" }
   }
 }

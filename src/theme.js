@@ -12,13 +12,13 @@ window.Alpine = Alpine
 Alpine.start()
 
 import './js/mobile-menu.js';
+import './js/scene-primitives.js';
 
 // Page Change
 document.addEventListener("turbo:load", function () {
     // console.log('turbo:load');
 
 });
-
 
 
 

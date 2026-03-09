@@ -1,0 +1,95 @@
+{
+  "designSystems": {
+    "editorial-signal": {
+      "status": "implemented",
+      "description": "Warm paper surfaces, sea-blue actions, refined editorial typography.",
+      "foundations": [
+        "paper-canvas",
+        "glass-surface-cards",
+        "Fraunces-display",
+        "Manrope-body"
+      ],
+      "defaultAddons": [
+        "summary-grid",
+        "contact-panel",
+        "count-up-stats"
+      ]
+    }
+  },
+  "pageFamilies": {
+    "services-hub": {
+      "status": "implemented",
+      "description": "Intro + service cards grid + contact panel."
+    },
+    "about-detail": {
+      "status": "implemented",
+      "description": "Intro + rich content + highlights + contact panel."
+    },
+    "service-detail": {
+      "status": "implemented",
+      "description": "Intro + deliverables + related offers + contact panel."
+    },
+    "contact-detail": {
+      "status": "implemented",
+      "description": "Intro + contact panel."
+    }
+  },
+  "addons": {
+    "hero-split": {
+      "status": "implemented",
+      "description": "Fullscreen split hero section."
+    },
+    "hero-centered": {
+      "status": "implemented",
+      "description": "Centered fullscreen hero section."
+    },
+    "stats-band": {
+      "status": "implemented",
+      "description": "Responsive stat tile grid with count-up support."
+    },
+    "offer-cards": {
+      "status": "implemented",
+      "description": "Offer or service card grid section."
+    },
+    "proof-results": {
+      "status": "implemented",
+      "description": "Case proof, quotes or results card section."
+    },
+    "faq-accordion": {
+      "status": "implemented",
+      "description": "FAQ section using daisyUI collapse primitives."
+    },
+    "final-cta": {
+      "status": "implemented",
+      "description": "Two-card final CTA section."
+    },
+    "blog": {
+      "status": "planned",
+      "description": "Editorial feed and article templates."
+    },
+    "faq": {
+      "status": "planned",
+      "description": "FAQ section body and structured schema."
+    },
+    "testimonials": {
+      "status": "planned",
+      "description": "Social proof and testimonial patterns."
+    },
+    "case-studies": {
+      "status": "planned",
+      "description": "Proof/results detail pages and listing patterns."
+    },
+    "count-up-stats": {
+      "status": "implemented",
+      "description": "Animated stat tiles powered by scene primitives."
+    },
+    "contact-panel": {
+      "status": "implemented",
+      "description": "Reusable contact surface and normalized contact list."
+    },
+    "summary-grid": {
+      "status": "implemented",
+      "description": "Reusable summary-card collection for offers, posts, or services."
+    }
+  }
+}

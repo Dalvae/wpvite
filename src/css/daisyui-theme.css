@@ -1,0 +1,43 @@
+@plugin "daisyui" {
+  themes: false;
+  root: ":root";
+  logs: false;
+}
+
+@plugin "daisyui/theme" {
+  name: "starterspin";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: var(--ds-color-surface);
+  --color-base-200: var(--ds-color-background-muted);
+  --color-base-300: color-mix(in srgb, var(--ds-color-line) 92%, white 8%);
+  --color-base-content: var(--ds-color-foreground);
+
+  --color-primary: var(--ds-color-primary);
+  --color-primary-content: var(--ds-color-on-primary);
+  --color-secondary: var(--ds-color-secondary);
+  --color-secondary-content: var(--ds-color-on-secondary);
+  --color-accent: var(--ds-color-tertiary);
+  --color-accent-content: var(--ds-color-on-tertiary);
+  --color-neutral: var(--ds-color-secondary);
+  --color-neutral-content: var(--ds-color-on-secondary);
+  --color-info: var(--ds-color-info);
+  --color-info-content: var(--ds-color-on-primary);
+  --color-success: var(--ds-color-success);
+  --color-success-content: var(--ds-color-on-success);
+  --color-warning: var(--ds-color-warning);
+  --color-warning-content: var(--ds-color-on-warning);
+  --color-error: var(--ds-color-danger);
+  --color-error-content: var(--ds-color-on-danger);
+
+  --radius-selector: var(--ds-radius-button-md);
+  --radius-field: var(--ds-radius-md);
+  --radius-box: var(--ds-radius-card);
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}

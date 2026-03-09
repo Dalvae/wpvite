@@ -1,0 +1,39 @@
+{
+  "site": {
+    "name": "Northshore Advisory",
+    "slug": "northshore-advisory",
+    "tagline": "Operational clarity for growing service teams"
+  },
+  "brand": {
+    "designSystem": "editorial-signal",
+    "primaryCta": "Book a discovery call",
+    "voice": "clear, expert, grounded"
+  },
+  "pageFamilies": [
+    {
+      "family": "services-hub",
+      "slug": "services",
+      "title": "Services"
+    },
+    {
+      "family": "about-detail",
+      "slug": "about",
+      "title": "About"
+    },
+    {
+      "family": "contact-detail",
+      "slug": "contact",
+      "title": "Contact"
+    }
+  ],
+  "addons": [
+    "hero-split",
+    "stats-band",
+    "offer-cards",
+    "faq-accordion",
+    "final-cta",
+    "summary-grid",
+    "contact-panel",
+    "count-up-stats"
+  ]
+}
