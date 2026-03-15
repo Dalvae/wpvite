@@ -98,6 +98,15 @@
   --ds-leading-relaxed: 1.74;
   --ds-tracking-tight: -0.022em;
   --ds-tracking-ui: 0.08em;
+
+  /* Typography recipes */
+  --ds-title-display: clamp(2.5rem, 6vw, 5.3rem);
+  --ds-title-page: var(--ds-step-5);
+  --ds-title-section: var(--ds-step-3);
+  --ds-title-card: var(--ds-step-2);
+  --ds-body-intro: var(--ds-step-1);
+  --ds-stat-value: clamp(2rem, 4vw, 3rem);
+
   --ds-measure: 66ch;
 
   /* Semantic text roles */
@@ -336,6 +345,20 @@
   --text-overline--line-height: var(--ds-type-overline-line-height);
   --text-overline--font-weight: var(--ds-type-overline-weight);
   --text-overline--letter-spacing: var(--ds-type-overline-tracking);
+
+  --text-title-display: var(--ds-title-display);
+  --text-title-page: var(--ds-title-page);
+  --text-title-section: var(--ds-title-section);
+  --text-title-card: var(--ds-title-card);
+  --text-body-intro: var(--ds-body-intro);
+  --text-stat-value: var(--ds-stat-value);
+
+  --leading-tight: var(--ds-leading-tight);
+  --leading-snug: var(--ds-leading-snug);
+  --leading-normal: var(--ds-leading-normal);
+  --leading-relaxed: var(--ds-leading-relaxed);
+  --tracking-tight: var(--ds-tracking-tight);
+  --tracking-ui: var(--ds-tracking-ui);
 
   --shadow-panel: var(--ds-shadow-panel);
   --shadow-floating: var(--ds-shadow-floating);
