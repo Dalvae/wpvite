@@ -1,0 +1,4 @@
+{
+  "_doc": "Single source of truth for per-page section field maps. Read by PHP (carbon-fields-page-fields.php), Python seeder (seed-content-rest.py), and WPML generator (generate-wpml-config.py). Field wpml values: translate, copy, copy-once. Add pages here when spinning off — the starter ships empty.",
+  "pages": {}
+}

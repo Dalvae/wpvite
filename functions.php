@@ -7,6 +7,8 @@ require 'inc/vite.php';
 require 'inc/performance.php';
 
 require 'inc/acf.php';
+require 'inc/carbon-fields.php';
+require 'inc/carbon-fields-page-fields.php';
 require 'inc/blog.php';
 require 'inc/cleanup.php';
 require 'inc/comments.php';
