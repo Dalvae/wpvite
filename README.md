@@ -31,6 +31,9 @@ pnpm dev                     # start Vite dev server (HMR)
 | `pnpm build` | Build production assets to `dist/` |
 | `pnpm spin:init --name ... --preset ...` | Initialize the active site config from a brand preset |
 | `pnpm pipeline:validate` | Validate active brand config and page manifests |
+| `pnpm zip:theme` | Build a deploy-ready theme ZIP |
+| `pnpm deploy:local` | Deploy the theme ZIP locally on the VPS with WP-CLI/docker fallback |
+| `pnpm wpml:check` | Verify generated WPML config is up to date |
 | `pnpm compose:site <manifest>` | Validate and normalize a site composition manifest |
 | `pnpm compose:site:write <manifest>` | Write normalized site composition output to `tmp/` |
 | `pnpm wp <command>` | Run WP-CLI (e.g. `pnpm wp theme list`) |
@@ -86,6 +89,8 @@ pnpm dev                     # start Vite dev server (HMR)
 - Extraction map from `infinitalent`: `docs/infinitalent-extraction-map.md`
 - Section library: `docs/section-library.md`
 - Pipeline: `docs/pipeline.md`
+- VPS deployment: `docs/deployment-vps.md`
+- WPML translation: `docs/translation-pipeline.md`
 - Site composer: `docs/site-composer.md`
 - Contributor/agent guidance: `AGENTS.md`
 

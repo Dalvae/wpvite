@@ -80,42 +80,6 @@
   gap: var(--ds-space-8);
 }
 
-.content-card {
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  gap: var(--ds-space-5);
-  padding: clamp(1.35rem, 2vw, 2rem);
-  border: 1px solid color-mix(in srgb, var(--ds-color-line) 88%, transparent);
-  border-radius: var(--ds-radius-card);
-  background: var(--ds-color-surface-elevated);
-  box-shadow: var(--ds-shadow-panel);
-  backdrop-filter: blur(12px);
-}
-
-.content-card--summary {
-  align-content: start;
-  height: 100%;
-}
-
-.content-card--empty {
-  text-align: center;
-  justify-items: center;
-}
-
-.content-card__media {
-  margin: 0;
-  overflow: hidden;
-  border-radius: calc(var(--ds-radius-card) - var(--ds-space-2));
-}
-
-.content-card__image {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-}
-
 .page-collection {
   display: grid;
 }

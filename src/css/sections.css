@@ -105,19 +105,6 @@
   gap: var(--ds-space-3);
 }
 
-.section-faq__question {
-  font-size: var(--ds-step-1);
-  font-weight: 700;
-  line-height: var(--ds-leading-snug);
-  color: var(--ds-color-foreground-strong);
-}
-
-.section-faq__answer {
-  display: grid;
-  gap: var(--ds-space-3);
-  color: var(--ds-color-foreground);
-}
-
 @media (min-width: 768px) {
   .section-stats__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

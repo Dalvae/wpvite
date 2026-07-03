@@ -43,11 +43,11 @@ $has_header = trim((string) $args['kicker']) !== '' || trim((string) $args['titl
                     continue;
                 }
                 ?>
-                <details class="collapse collapse-plus section-faq__item border border-base-300 bg-base-100 shadow-md" data-reveal="true">
-                    <summary class="collapse-title section-faq__question">
+                <details class="collapse collapse-plus rounded-box border border-base-300 bg-base-100/90 shadow-sm" data-reveal="true">
+                    <summary class="collapse-title section-faq__question text-[var(--ds-step-1)] font-bold leading-snug text-[var(--ds-color-foreground-strong)]">
                         <?php echo esc_html($question); ?>
                     </summary>
-                    <div class="collapse-content section-faq__answer">
+                    <div class="collapse-content section-faq__answer grid gap-3 text-[var(--ds-color-foreground)]">
                         <?php if ($answer !== '') : ?>
                             <p><?php echo esc_html($answer); ?></p>
                         <?php endif; ?>

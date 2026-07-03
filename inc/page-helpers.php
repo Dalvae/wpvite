@@ -57,7 +57,7 @@ if (!function_exists('starter_get_content_card_classes')) {
     function starter_get_content_card_classes(string $extra_classes = ''): string
     {
         return starter_merge_classes(
-            'content-card card border border-base-300 bg-base-100/90 shadow-xl backdrop-blur-sm',
+            'content-card card card-border relative overflow-hidden rounded-box bg-base-100/90 shadow-xl backdrop-blur-sm',
             $extra_classes
         );
     }

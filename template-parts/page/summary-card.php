@@ -65,11 +65,11 @@ $card_classes = starter_get_page_surface_classes('summary-card', (string) $card_
     <article class="<?php echo esc_attr($card_classes); ?>" data-reveal="true">
 <?php endif; ?>
     <?php if ($card_image_url !== '') : ?>
-        <figure class="content-card__media">
+        <figure class="overflow-hidden rounded-[calc(var(--ds-radius-card)-var(--ds-space-2))]">
             <img
                 src="<?php echo esc_url($card_image_url); ?>"
                 alt="<?php echo esc_attr($card_image_alt); ?>"
-                class="content-card__image"
+                class="block aspect-[16/10] w-full object-cover"
                 loading="lazy">
         </figure>
     <?php endif; ?>

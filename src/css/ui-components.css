@@ -5,57 +5,14 @@
   vertical-align: middle;
 }
 
-.starter-btn {
-  gap: var(--ds-space-2);
-  font-size: var(--ds-step--1);
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  transition:
-    transform var(--ds-motion-fast) var(--ds-ease-standard),
-    box-shadow var(--ds-motion-fast) var(--ds-ease-standard);
-}
-
-.starter-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--ds-shadow-soft);
-}
-
 .btn__icon {
   width: 1.05em;
   height: 1.05em;
 }
 
-.starter-btn:disabled,
-.starter-btn[aria-disabled="true"] {
-  pointer-events: none;
-  opacity: 0.58;
-}
-
-.starter-icon-button {
-  transition:
-    transform var(--ds-motion-fast) var(--ds-ease-standard);
-}
-
-.starter-icon-button:hover {
-  transform: translateY(-1px);
-}
-
 .icon-button__icon {
   width: 1.1rem;
   height: 1.1rem;
-}
-
-.starter-badge {
-  font-size: var(--ds-step--1);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.ui-panel {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--ds-radius-card);
 }
 
 .ui-brand-lockup {

@@ -113,7 +113,7 @@ if (!function_exists('starter_get_button_classes')) {
         $resolved_radius = array_key_exists($radius, $radius_classes) ? $radius : 'md';
 
         return starter_merge_classes(
-            'btn starter-btn no-underline shadow-none hover:no-underline',
+            'btn starter-btn no-underline hover:no-underline font-bold tracking-[0.01em] gap-2 transition-transform transition-shadow duration-[var(--ds-motion-fast)] ease-[var(--ds-ease-standard)] hover:-translate-y-px hover:shadow-[var(--ds-shadow-soft)] disabled:pointer-events-none disabled:opacity-60',
             $variant_classes[$resolved_variant],
             $size_classes[$resolved_size],
             $radius_classes[$resolved_radius],
@@ -133,7 +133,7 @@ if (!function_exists('starter_get_icon_button_classes')) {
         $resolved_variant = array_key_exists($variant, $variants) ? $variant : 'surface';
 
         return starter_merge_classes(
-            'btn btn-square starter-icon-button shadow-none',
+            'btn btn-square starter-icon-button shadow-none transition-transform duration-[var(--ds-motion-fast)] ease-[var(--ds-ease-standard)] hover:-translate-y-px disabled:pointer-events-none disabled:opacity-60',
             $variants[$resolved_variant],
             $extra_classes
         );
@@ -154,7 +154,7 @@ if (!function_exists('starter_get_badge_classes')) {
         $resolved_variant = array_key_exists($variant, $variants) ? $variant : 'surface';
 
         return starter_merge_classes(
-            'badge starter-badge',
+            'badge starter-badge font-bold uppercase tracking-[0.08em] text-[var(--ds-step--1)]',
             $variants[$resolved_variant],
             $extra_classes
         );
@@ -172,7 +172,7 @@ if (!function_exists('starter_get_panel_classes')) {
         $resolved_variant = array_key_exists($variant, $variants) ? $variant : 'soft';
 
         return starter_merge_classes(
-            'ui-panel card border border-base-300 shadow-xl backdrop-blur-sm',
+            'ui-panel card card-border relative overflow-hidden rounded-box shadow-xl backdrop-blur-sm',
             $variants[$resolved_variant],
             $extra_classes
         );
@@ -296,4 +296,3 @@ if (!function_exists('starter_get_content_stack_classes')) {
         return starter_merge_classes($variants[$resolved_variant], $extra_classes);
     }
 }
-
