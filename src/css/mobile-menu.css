@@ -70,6 +70,12 @@
 
   }
 
+  @media (max-width: 767px) {
+    #page #mobile-menu-container {
+      backdrop-filter: none;
+    }
+  }
+
   .mobile-menu-shell {
     display: grid;
     grid-template-rows: auto 1fr;

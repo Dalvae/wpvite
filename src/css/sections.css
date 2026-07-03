@@ -109,6 +109,30 @@
   backdrop-filter: blur(14px);
 }
 
+@media (max-width: 767px) {
+  .section-video-hero {
+    min-height: min(42rem, 100svh);
+  }
+
+  .section-video-hero__shell {
+    min-height: min(42rem, 100svh);
+    padding-block: clamp(6rem, 14vh, 9rem) var(--ds-space-6);
+  }
+
+  .section-video-hero__scrim {
+    background: linear-gradient(180deg, rgb(0 0 0 / 0.62), rgb(0 0 0 / 0.42));
+  }
+
+  .section-video-hero__panel {
+    background: rgb(0 0 0 / 0.42);
+    backdrop-filter: none;
+  }
+
+  .section-video-hero__ticker {
+    background: rgb(0 0 0 / 0.44);
+  }
+}
+
 .section-video-hero__panel-title {
   margin: 0;
   font-size: var(--ds-title-card);

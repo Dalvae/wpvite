@@ -10,9 +10,11 @@ $args = wp_parse_args(
         'actions' => array(),
         'video_url' => '',
         'video_fallback_image' => '',
+        'video_fallback_size' => 'large',
         'image_id' => 0,
         'video_id' => 0,
         'mobile_image_id' => 0,
+        'mobile_image_size' => 'medium_large',
         'ticker_items' => array(),
         'proximity_panel' => array(),
     )
@@ -26,7 +28,7 @@ if (trim((string) $args['video_url']) === '' && (int) $args['video_id'] > 0) {
 }
 
 if (trim((string) $args['video_fallback_image']) === '' && (int) $args['image_id'] > 0) {
-    $resolved = (string) wp_get_attachment_image_url((int) $args['image_id'], 'full');
+    $resolved = (string) wp_get_attachment_image_url((int) $args['image_id'], (string) $args['video_fallback_size']);
     if ($resolved !== '') {
         $args['video_fallback_image'] = $resolved;
     }
@@ -34,7 +36,7 @@ if (trim((string) $args['video_fallback_image']) === '' && (int) $args['image_id
 
 $mobile_image_url = '';
 if ((int) $args['mobile_image_id'] > 0) {
-    $mobile_image_url = (string) wp_get_attachment_image_url((int) $args['mobile_image_id'], 'full');
+    $mobile_image_url = (string) wp_get_attachment_image_url((int) $args['mobile_image_id'], (string) $args['mobile_image_size']);
 }
 
 $actions = starter_normalize_component_actions($args['actions']);
@@ -62,14 +64,14 @@ if ((int) $args['video_id'] > 0) {
     <?php if ($has_video || $has_fallback || $has_mobile) : ?>
         <div class="section-video-hero__backdrop" aria-hidden="true">
             <?php if ($has_video) : ?>
-                <video class="section-video-hero__video hidden md:block" autoplay muted loop playsinline <?php if ($has_fallback) : ?>poster="<?php echo esc_url((string) $args['video_fallback_image']); ?>"<?php endif; ?>>
-                    <source src="<?php echo esc_url((string) $args['video_url']); ?>" type="<?php echo esc_attr($video_mime); ?>">
+                <video class="section-video-hero__video hidden md:block" autoplay muted loop playsinline preload="metadata" <?php if ($has_fallback) : ?>poster="<?php echo esc_url((string) $args['video_fallback_image']); ?>"<?php endif; ?>>
+                    <source src="<?php echo esc_url((string) $args['video_url']); ?>" type="<?php echo esc_attr($video_mime); ?>" media="(min-width: 768px)">
                 </video>
             <?php endif; ?>
             <?php if ($has_mobile) : ?>
-                <div class="section-video-hero__still md:hidden" style="background-image: url('<?php echo esc_url($mobile_image_url); ?>')"></div>
+                <img class="section-video-hero__still md:hidden" src="<?php echo esc_url($mobile_image_url); ?>" alt="" loading="eager" fetchpriority="high" decoding="async">
             <?php elseif ($has_fallback) : ?>
-                <div class="section-video-hero__still<?php echo $has_video ? ' md:hidden' : ''; ?>" style="background-image: url('<?php echo esc_url((string) $args['video_fallback_image']); ?>')"></div>
+                <img class="section-video-hero__still<?php echo $has_video ? ' md:hidden' : ''; ?>" src="<?php echo esc_url((string) $args['video_fallback_image']); ?>" alt="" loading="eager" fetchpriority="high" decoding="async">
             <?php endif; ?>
             <div class="section-video-hero__scrim"></div>
         </div>

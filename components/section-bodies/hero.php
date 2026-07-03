@@ -12,6 +12,9 @@ $args = wp_parse_args(
         'media_image_url' => '',
         'media_image_alt' => '',
         'media_surface_class' => '',
+        'media_loading' => 'eager',
+        'media_fetchpriority' => 'high',
+        'media_decoding' => 'async',
     )
 );
 
@@ -65,7 +68,9 @@ $has_media = trim((string) $args['media_html']) !== '' || trim((string) $args['m
                     class="section-hero__image"
                     src="<?php echo esc_url((string) $args['media_image_url']); ?>"
                     alt="<?php echo esc_attr((string) $args['media_image_alt']); ?>"
-                    loading="lazy">
+                    loading="<?php echo esc_attr((string) $args['media_loading']); ?>"
+                    fetchpriority="<?php echo esc_attr((string) $args['media_fetchpriority']); ?>"
+                    decoding="<?php echo esc_attr((string) $args['media_decoding']); ?>">
             </figure>
         <?php elseif (trim((string) $args['media_html']) !== '') : ?>
             <div class="<?php echo esc_attr(starter_get_panel_classes('soft', starter_merge_classes('section-hero__media-card p-4', (string) $args['media_surface_class']))); ?>">
