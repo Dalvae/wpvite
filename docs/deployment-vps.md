@@ -30,6 +30,34 @@ Use a different Cloudflare hostname per site, for example:
 
 ## Deployment path
 
+For a new spin-off on the VPS:
+
+```bash
+pnpm env:generate -- --slug site-a --port 8091 --db-port 33307 --admin-email admin+site-a@example.com
+pnpm install --frozen-lockfile
+docker compose up -d
+pnpm wp:install:local
+pnpm site:apply
+```
+
+This generates `.env` with random DB password, WordPress salts, and a non-default
+admin user/password. The file is written with mode `600` and must not be
+committed.
+
+Cloudflare named tunnel routing should point each fixed hostname at the local
+loopback port, for example:
+
+```yaml
+ingress:
+  - hostname: site-a.example.com
+    service: http://localhost:8091
+  - service: http_status:404
+```
+
+Create DNS/CNAME separately through Cloudflare or Azure DNS. Quick Tunnel
+`trycloudflare.com` URLs are only temporary smoke-test links and should not be
+treated as stable deploy URLs.
+
 Build and deploy locally on the VPS:
 
 ```bash
