@@ -22,6 +22,15 @@ const main = async () => {
     throw new Error(`site.config.json references an unknown brand preset: ${preset}`);
   }
 
+  if (!siteConfig?.site?.name || !siteConfig?.site?.slug) {
+    throw new Error("site.config.json requires site.name and site.slug");
+  }
+
+  const contact = siteConfig?.site?.contact ?? {};
+  if (!contact.email || !contact.phone) {
+    throw new Error("site.config.json requires site.contact.email and site.contact.phone");
+  }
+
   const files = (await readdir(manifestsDir)).filter((file) => file.endsWith(".json"));
   const errors = [];
 
@@ -53,6 +62,7 @@ const main = async () => {
     [
       `Pipeline validation passed`,
       `- active preset: ${preset}`,
+      `- site: ${siteConfig.site.name} (${siteConfig.site.slug})`,
       `- page manifests: ${files.length}`,
     ].join("\n") + "\n",
   );

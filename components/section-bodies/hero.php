@@ -15,7 +15,7 @@ $args = wp_parse_args(
     )
 );
 
-$actions = array_values(array_filter((array) $args['actions'], 'is_array'));
+$actions = starter_normalize_component_actions($args['actions']);
 $has_media = trim((string) $args['media_html']) !== '' || trim((string) $args['media_image_url']) !== '';
 ?>
 <div class="section-hero__copy content-stack content-stack--copy" data-reveal="true">
@@ -38,23 +38,17 @@ $has_media = trim((string) $args['media_html']) !== '' || trim((string) $args['m
         <div class="section-hero__actions">
             <?php foreach ($actions as $action) : ?>
                 <?php
-                $action_text = trim((string) ($action['text'] ?? $action['label'] ?? ''));
-                $action_href = trim((string) ($action['href'] ?? $action['url'] ?? ''));
-                if ($action_text === '' || $action_href === '') {
-                    continue;
-                }
-
                 get_template_part(
                     'components/button',
                     null,
                     array(
-                        'text' => $action_text,
-                        'href' => $action_href,
-                        'variant' => (string) ($action['variant'] ?? 'primary'),
-                        'icon' => (string) ($action['icon'] ?? ''),
-                        'icon_position' => (string) ($action['icon_position'] ?? 'after'),
-                        'target' => (string) ($action['target'] ?? ''),
-                        'rel' => (string) ($action['rel'] ?? ''),
+                        'text' => $action['text'],
+                        'href' => $action['href'],
+                        'variant' => $action['variant'],
+                        'icon' => $action['icon'],
+                        'icon_position' => $action['icon_position'],
+                        'target' => $action['target'],
+                        'rel' => $action['rel'],
                     )
                 );
                 ?>

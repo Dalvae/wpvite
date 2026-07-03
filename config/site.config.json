@@ -2,7 +2,11 @@
   "site": {
     "name": "Starter Site",
     "slug": "starter",
-    "tagline": ""
+    "tagline": "",
+    "contact": {
+      "email": "hello@example.com",
+      "phone": "+1 555 000 0000"
+    }
   },
   "brand": {
     "preset": "editorial-signal"

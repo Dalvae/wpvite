@@ -62,6 +62,105 @@ if (!function_exists('starter_render_html_attributes')) {
     }
 }
 
+if (!function_exists('starter_normalize_component_items')) {
+    function starter_normalize_component_items($items): array
+    {
+        return array_values(array_filter((array) $items, 'is_array'));
+    }
+}
+
+if (!function_exists('starter_normalize_component_action')) {
+    function starter_normalize_component_action(array $action, array $overrides = array()): array
+    {
+        $defaults = array(
+            'text' => trim((string) ($action['text'] ?? $action['label'] ?? '')),
+            'href' => trim((string) ($action['href'] ?? $action['url'] ?? '')),
+            'variant' => (string) ($action['variant'] ?? 'primary'),
+            'icon' => (string) ($action['icon'] ?? ''),
+            'icon_position' => (string) ($action['icon_position'] ?? 'after'),
+            'target' => (string) ($action['target'] ?? ''),
+            'rel' => (string) ($action['rel'] ?? ''),
+        );
+
+        return array_merge($defaults, $overrides);
+    }
+}
+
+if (!function_exists('starter_normalize_component_actions')) {
+    function starter_normalize_component_actions($actions, array $overrides = array()): array
+    {
+        $normalized_actions = array();
+
+        foreach (starter_normalize_component_items($actions) as $action) {
+            $normalized_action = starter_normalize_component_action($action, $overrides);
+
+            if ($normalized_action['text'] === '' || $normalized_action['href'] === '') {
+                continue;
+            }
+
+            $normalized_actions[] = $normalized_action;
+        }
+
+        return $normalized_actions;
+    }
+}
+
+if (!function_exists('starter_normalize_component_link')) {
+    function starter_normalize_component_link(array $link, array $overrides = array()): array
+    {
+        $defaults = array(
+            'text' => trim((string) ($link['text'] ?? $link['label'] ?? $link['action_label'] ?? __('Learn more', 'wpvite'))),
+            'href' => trim((string) ($link['href'] ?? $link['url'] ?? '')),
+            'icon' => trim((string) ($link['icon'] ?? '')),
+            'target' => (string) ($link['target'] ?? ''),
+            'rel' => (string) ($link['rel'] ?? ''),
+        );
+
+        return array_merge($defaults, $overrides);
+    }
+}
+
+if (!function_exists('starter_normalize_component_card')) {
+    function starter_normalize_component_card(array $card, array $overrides = array()): array
+    {
+        $defaults = array(
+            'title' => trim((string) ($card['title'] ?? '')),
+            'text' => trim((string) ($card['text'] ?? $card['description'] ?? '')),
+            'meta' => trim((string) ($card['meta'] ?? $card['subtitle'] ?? '')),
+            'badge' => trim((string) ($card['badge'] ?? '')),
+            'href' => trim((string) ($card['href'] ?? $card['url'] ?? '')),
+            'action_label' => trim((string) ($card['action_label'] ?? 'Learn more')),
+            'icon' => trim((string) ($card['icon'] ?? '')),
+        );
+
+        return array_merge($defaults, $overrides);
+    }
+}
+
+if (!function_exists('starter_normalize_component_header')) {
+    function starter_normalize_component_header(array $args, array $overrides = array()): array
+    {
+        $defaults = array(
+            'preset' => (string) ($args['header_preset'] ?? $args['preset'] ?? 'page-section'),
+            'kicker' => (string) ($args['kicker'] ?? ''),
+            'title' => (string) ($args['title'] ?? ''),
+            'intro' => (string) ($args['intro'] ?? ''),
+            'title_tag' => (string) ($args['title_tag'] ?? 'h2'),
+        );
+
+        return array_merge($defaults, $overrides);
+    }
+}
+
+if (!function_exists('starter_component_header_has_content')) {
+    function starter_component_header_has_content(array $args): bool
+    {
+        return trim((string) ($args['kicker'] ?? '')) !== ''
+            || trim((string) ($args['title'] ?? '')) !== ''
+            || trim((string) ($args['intro'] ?? '')) !== '';
+    }
+}
+
 if (!function_exists('starter_get_icon_svg')) {
     function starter_get_icon_svg(string $name, array $args = array()): string
     {

@@ -10,8 +10,8 @@ $args = wp_parse_args(
     )
 );
 
-$items = array_values(array_filter((array) $args['items'], 'is_array'));
-$has_header = trim((string) $args['kicker']) !== '' || trim((string) $args['title']) !== '' || trim((string) $args['intro']) !== '';
+$items = starter_normalize_component_items($args['items']);
+$has_header = starter_component_header_has_content($args);
 ?>
 <div class="section-offers content-stack content-stack--section">
     <?php if ($has_header) : ?>
@@ -36,46 +36,40 @@ $has_header = trim((string) $args['kicker']) !== '' || trim((string) $args['titl
         <div class="section-offers__grid">
             <?php foreach ($items as $item) : ?>
                 <?php
-                $item_title = trim((string) ($item['title'] ?? ''));
-                $item_text = trim((string) ($item['text'] ?? $item['description'] ?? ''));
-                $item_meta = trim((string) ($item['meta'] ?? $item['subtitle'] ?? ''));
-                $item_badge = trim((string) ($item['badge'] ?? ''));
-                $item_href = trim((string) ($item['href'] ?? $item['url'] ?? ''));
-                $item_action = trim((string) ($item['action_label'] ?? 'Learn more'));
-                $item_icon = trim((string) ($item['icon'] ?? ''));
+                $item = starter_normalize_component_card($item);
 
-                if ($item_title === '') {
+                if ($item['title'] === '') {
                     continue;
                 }
                 ?>
                 <article class="<?php echo esc_attr(starter_get_panel_classes('soft', 'section-offer-card p-6')); ?>" data-reveal="true">
                     <div class="section-offer-card__header">
-                        <?php if ($item_badge !== '') : ?>
+                        <?php if ($item['badge'] !== '') : ?>
                             <span class="<?php echo esc_attr(starter_get_badge_classes('accent-soft')); ?>">
-                                <?php echo esc_html($item_badge); ?>
+                                <?php echo esc_html($item['badge']); ?>
                             </span>
                         <?php endif; ?>
 
-                        <h3 class="section-offer-card__title"><?php echo esc_html($item_title); ?></h3>
+                        <h3 class="section-offer-card__title"><?php echo esc_html($item['title']); ?></h3>
                     </div>
 
-                    <?php if ($item_meta !== '') : ?>
-                        <p class="section-offer-card__meta"><?php echo esc_html($item_meta); ?></p>
+                    <?php if ($item['meta'] !== '') : ?>
+                        <p class="section-offer-card__meta"><?php echo esc_html($item['meta']); ?></p>
                     <?php endif; ?>
 
-                    <?php if ($item_text !== '') : ?>
-                        <p class="section-offer-card__text"><?php echo esc_html($item_text); ?></p>
+                    <?php if ($item['text'] !== '') : ?>
+                        <p class="section-offer-card__text"><?php echo esc_html($item['text']); ?></p>
                     <?php endif; ?>
 
-                    <?php if ($item_href !== '') : ?>
+                    <?php if ($item['href'] !== '') : ?>
                         <?php
                         get_template_part(
                             'components/link-row',
                             null,
                             array(
-                                'text' => $item_action,
-                                'href' => $item_href,
-                                'icon' => $item_icon !== '' ? $item_icon : 'arrow-right',
+                                'text' => $item['action_label'],
+                                'href' => $item['href'],
+                                'icon' => $item['icon'] !== '' ? $item['icon'] : 'arrow-right',
                             )
                         );
                         ?>

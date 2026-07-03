@@ -19,6 +19,9 @@ Use a different Cloudflare hostname per site, for example:
 ## Hard security rules
 
 - Do not expose MariaDB/PostgreSQL to the public internet.
+- For multiple sites on the same VPS, give each local database a unique
+  `DB_PORT` and keep `DB_IP=127.0.0.1`, or remove DB port publishing entirely
+  when external local access is not needed.
 - Do not expose Docker socket, WP-CLI, Vite dev server, phpMyAdmin, or shell endpoints.
 - Do not use default DB passwords on live sites.
 - Do not keep `WORDPRESS_DEBUG=1` in production.

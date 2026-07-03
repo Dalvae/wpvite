@@ -10,8 +10,8 @@ services:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_NAME: "${DB_NAME:-wordpress}"
       WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: "${DB_ROOT_PASSWORD:-password}"
-      WORDPRESS_DEBUG: "${WORDPRESS_DEBUG:-1}"
+      WORDPRESS_DB_PASSWORD: "${DB_ROOT_PASSWORD:?DB_ROOT_PASSWORD is required}"
+      WORDPRESS_DEBUG: "${WORDPRESS_DEBUG:-0}"
     depends_on:
       - db
 
@@ -24,7 +24,7 @@ services:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_NAME: "${DB_NAME:-wordpress}"
       WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: "${DB_ROOT_PASSWORD:-password}"
+      WORDPRESS_DB_PASSWORD: "${DB_ROOT_PASSWORD:?DB_ROOT_PASSWORD is required}"
     depends_on:
       db:
         condition: service_healthy
@@ -36,7 +36,7 @@ services:
   db:
     image: mariadb:lts
     ports:
-      - "${IP:-127.0.0.1}:3306:3306"
+      - "${DB_IP:-127.0.0.1}:${DB_PORT:-3306}:3306"
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
@@ -44,7 +44,7 @@ services:
       - db_data:/var/lib/mysql
     environment:
       MYSQL_DATABASE: "${DB_NAME:-wordpress}"
-      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD:-password}"
+      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD:?DB_ROOT_PASSWORD is required}"
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       interval: 5s

@@ -1,5 +1,65 @@
 <?php
 
+if (!function_exists('starter_get_section_header_preset_map')) {
+    function starter_get_section_header_preset_map(): array
+    {
+        return array(
+            'page-intro' => array(
+                'header' => '',
+                'kicker' => 'text-xs font-bold tracking-ui uppercase text-muted',
+                'title' => 'text-title-page max-w-[14ch]',
+                'intro' => 'text-body-intro leading-relaxed text-muted',
+            ),
+            'page-section' => array(
+                'header' => '',
+                'kicker' => 'text-xs font-bold tracking-ui uppercase text-muted',
+                'title' => 'text-title-section max-w-[18ch]',
+                'intro' => 'leading-relaxed text-muted',
+            ),
+            'empty-state' => array(
+                'header' => 'items-center text-center',
+                'kicker' => 'text-xs font-bold tracking-ui uppercase text-muted',
+                'title' => 'text-title-section max-w-[18ch]',
+                'intro' => 'leading-relaxed text-muted',
+            ),
+            'centered-display' => array(
+                'header' => 'items-center text-center',
+                'kicker' => 'text-xs font-bold tracking-ui uppercase text-muted',
+                'title' => 'text-title-display max-w-none',
+                'intro' => 'leading-relaxed text-muted',
+            ),
+            'scene-display' => array(
+                'header' => '',
+                'kicker' => 'text-xs font-bold tracking-ui uppercase text-muted',
+                'title' => 'text-title-display max-w-none',
+                'intro' => 'leading-relaxed text-muted',
+            ),
+            'sidebar-section' => array(
+                'header' => '',
+                'kicker' => 'text-xs font-bold tracking-ui uppercase text-muted',
+                'title' => 'text-title-section max-w-[18ch]',
+                'intro' => 'leading-relaxed text-muted',
+            ),
+        );
+    }
+}
+
+if (!function_exists('starter_get_section_header_preset_classes')) {
+    function starter_get_section_header_preset_classes(string $preset = ''): array
+    {
+        $defaults = array(
+            'header' => '',
+            'kicker' => 'text-xs font-bold tracking-ui uppercase text-muted',
+            'title' => 'text-title-section max-w-[18ch]',
+            'intro' => 'leading-relaxed text-muted',
+        );
+        $preset_map = starter_get_section_header_preset_map();
+        $normalized_preset = trim($preset);
+
+        return $preset_map[$normalized_preset] ?? $defaults;
+    }
+}
+
 if (!function_exists('starter_get_section_registry')) {
     function starter_get_section_registry(): array
     {

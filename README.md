@@ -30,6 +30,7 @@ pnpm dev                     # start Vite dev server (HMR)
 | `pnpm dev` | Start Vite dev server with HMR |
 | `pnpm build` | Build production assets to `dist/` |
 | `pnpm spin:init --name ... --preset ...` | Initialize the active site config from a brand preset |
+| `pnpm site:apply` | Apply site globals from `config/site.config.json` to local WordPress with WP-CLI |
 | `pnpm pipeline:validate` | Validate active brand config and page manifests |
 | `pnpm zip:theme` | Build a deploy-ready theme ZIP |
 | `pnpm deploy:local` | Deploy the theme ZIP locally on the VPS with WP-CLI/docker fallback |

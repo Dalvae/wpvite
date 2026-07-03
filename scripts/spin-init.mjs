@@ -30,6 +30,8 @@ const main = async () => {
   const name = getFlagValue("--name", "Starter Site").trim();
   const slug = getFlagValue("--slug", slugify(name)).trim();
   const tagline = getFlagValue("--tagline", "").trim();
+  const email = getFlagValue("--email", "hello@example.com").trim();
+  const phone = getFlagValue("--phone", "+1 555 000 0000").trim();
   const preset = getFlagValue("--preset", "editorial-signal").trim();
 
   if (!presets[preset]) {
@@ -41,6 +43,10 @@ const main = async () => {
       name,
       slug,
       tagline,
+      contact: {
+        email,
+        phone,
+      },
     },
     brand: {
       preset,
@@ -54,6 +60,8 @@ const main = async () => {
       `Initialized site config`,
       `- name: ${name}`,
       `- slug: ${slug}`,
+      `- email: ${email}`,
+      `- phone: ${phone}`,
       `- preset: ${preset}`,
       `- config: config/site.config.json`,
     ].join("\n") + "\n",

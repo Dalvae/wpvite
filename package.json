@@ -22,6 +22,8 @@
     "compose:site": "node scripts/compose-site.mjs",
     "compose:site:write": "node scripts/compose-site.mjs --write",
     "spin:init": "node scripts/spin-init.mjs",
+    "site:apply": "node scripts/apply-site-config-wpcli.mjs",
+    "site:apply:dry": "node scripts/apply-site-config-wpcli.mjs --dry-run",
     "pipeline:validate": "node scripts/pipeline-validate.mjs",
     "setup": "node setup.js",
     "zip:theme": "bash scripts/build-zip.sh",

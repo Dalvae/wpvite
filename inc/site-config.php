@@ -72,3 +72,49 @@ if (!function_exists('starter_get_site_tagline')) {
         return $configured !== '' ? $configured : (string) get_bloginfo('description');
     }
 }
+
+if (!function_exists('starter_get_site_contact')) {
+    function starter_get_site_contact(): array
+    {
+        $site_config = starter_get_site_config();
+        $contact = $site_config['site']['contact'] ?? array();
+
+        return is_array($contact) ? $contact : array();
+    }
+}
+
+if (!function_exists('starter_get_site_email')) {
+    function starter_get_site_email(): string
+    {
+        $contact = starter_get_site_contact();
+        $configured = trim((string) ($contact['email'] ?? ''));
+        $option = trim((string) get_option('starter_contact_email', ''));
+
+        if ($configured !== '') {
+            return sanitize_email($configured);
+        }
+
+        return $option !== '' ? sanitize_email($option) : sanitize_email((string) get_option('admin_email', ''));
+    }
+}
+
+if (!function_exists('starter_get_site_phone')) {
+    function starter_get_site_phone(): string
+    {
+        $contact = starter_get_site_contact();
+        $configured = trim((string) ($contact['phone'] ?? ''));
+        $option = trim((string) get_option('starter_contact_phone', ''));
+
+        return $configured !== '' ? $configured : $option;
+    }
+}
+
+if (!function_exists('starter_get_site_phone_href')) {
+    function starter_get_site_phone_href(): string
+    {
+        $phone = starter_get_site_phone();
+        $digits = preg_replace('/[^+0-9]/', '', $phone);
+
+        return $digits ? 'tel:' . $digits : '';
+    }
+}
