@@ -1,6 +1,8 @@
 node_modules/
 vendor/
 wp-data/
+.lighthouseci/
+reports/
 
 .env
 .env.local

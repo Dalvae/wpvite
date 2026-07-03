@@ -85,6 +85,8 @@ done
 
 rm -rf "$ASSEMBLY_DIR/assets/media" 2>/dev/null || true
 rm -rf "$ASSEMBLY_DIR/reference" 2>/dev/null || true
+rm -rf "$ASSEMBLY_DIR/.agents" "$ASSEMBLY_DIR/.opencode" "$ASSEMBLY_DIR/.claude" "$ASSEMBLY_DIR/.codex" 2>/dev/null || true
+rm -rf "$ASSEMBLY_DIR/.lighthouseci" "$ASSEMBLY_DIR/reports" 2>/dev/null || true
 rm -rf "$ASSEMBLY_DIR"/__pycache__ "$ASSEMBLY_DIR"/tmp
 find "$ASSEMBLY_DIR" -type f -name "*.pyc" -delete
 find "$ASSEMBLY_DIR" -type f -name "*.zip" -delete
@@ -109,7 +111,8 @@ echo "==> Creating zip: $ZIP_PATH"
   cd "$TMP_DIR"
   zip -rq "$ZIP_PATH" "$THEME_SLUG" \
     -x "*/__pycache__/*" -x "*.pyc" -x "*/tmp/*" -x "*/.git/*" \
-    -x "*/.github/*" -x "*/node_modules/*" -x "*/docs/*" \
+    -x "*/.github/*" -x "*/.agents/*" -x "*/.opencode/*" -x "*/.claude/*" -x "*/.codex/*" \
+    -x "*/node_modules/*" -x "*/.lighthouseci/*" -x "*/reports/*" -x "*/docs/*" \
     -x "*/scripts/*" -x "*/src/*" -x "*/images/*" -x "*/brief/*" -x "*/reference/*" -x "*.zip"
 )
 

@@ -32,6 +32,9 @@ pnpm dev                     # start Vite dev server (HMR)
 | `pnpm spin:init --name ... --preset ...` | Initialize the active site config from a brand preset |
 | `pnpm site:apply` | Apply site globals from `config/site.config.json` to local WordPress with WP-CLI |
 | `pnpm pipeline:validate` | Validate active brand config and page manifests |
+| `pnpm perf:lighthouse:local` | Run a mobile Lighthouse audit against `PERF_URL` or `http://localhost:8000` |
+| `pnpm perf:lighthouse:staging` | Run a mobile Lighthouse audit against `WP_STAGING_URL` |
+| `pnpm perf:lhci` | Run LHCI using `lighthouserc.cjs` and the configured target URL |
 | `pnpm zip:theme` | Build a deploy-ready theme ZIP |
 | `pnpm deploy:local` | Deploy the theme ZIP locally on the VPS with WP-CLI/docker fallback |
 | `pnpm wpml:check` | Verify generated WPML config is up to date |
@@ -113,6 +116,22 @@ Asset loading is handled by `vite-for-wp`. No manual dev/prod switching needed â
 
 - **Dev:** loads assets from Vite dev server with HMR
 - **Prod:** loads hashed assets from `dist/manifest.json`
+
+## Performance Audits
+
+WPVite includes repo-local Lighthouse/LHCI tooling for repeatable mobile audits.
+
+```bash
+PERF_URL=http://localhost:8000 pnpm perf:lighthouse:local
+WP_STAGING_URL=https://staging.example.com pnpm perf:lighthouse:staging
+LHCI_URL=https://staging.example.com pnpm perf:lhci
+```
+
+Reports are written to `.lighthouseci/`, which is ignored by git and excluded
+from release zips. The repo-local skill `.agents/skills/perf-audit/SKILL.md`
+documents the agent workflow. Local audits are useful for fast iteration, but
+staging/production URLs are required before claiming real-world performance
+improvements.
 
 ## Debug Helpers
 

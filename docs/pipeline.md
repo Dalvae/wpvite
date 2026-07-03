@@ -61,6 +61,10 @@ release zips must not include `scripts/`, `src/`, `brief/`, or source `images/`;
 content media should be uploaded to WordPress and referenced through the media
 map/attachment IDs instead of shipping inside the theme package.
 
+Agent/assistant tooling is also development-only. Release zips must not include
+`.agents/`, `.opencode/`, `.claude/`, `.codex/`, `.lighthouseci/`, or local
+performance reports.
+
 Composer `vendor/` is the exception: release zips must include production
 Composer dependencies because the theme loads `vendor/autoload.php` at runtime.
 Run `composer install --no-dev --prefer-dist --optimize-autoloader
