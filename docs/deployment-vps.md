@@ -62,6 +62,7 @@ Build and deploy locally on the VPS:
 
 ```bash
 pnpm install --frozen-lockfile
+composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
 pnpm wpml:check
 THEME_SLUG=starter pnpm zip:theme
 THEME_SLUG=starter WP_PATH=/var/www/site-a/current pnpm deploy:local
@@ -70,6 +71,15 @@ THEME_SLUG=starter WP_PATH=/var/www/site-a/current pnpm deploy:local
 `scripts/deploy-theme-local.sh` deploys a built ZIP to the local WordPress
 theme directory, keeps a timestamped backup, and can activate/flush cache with
 WP-CLI. It does not need a WordPress admin password.
+
+The theme zip intentionally includes `vendor/` because `functions.php` requires
+`vendor/autoload.php` and Carbon Fields boots from Composer dependencies. If
+`vendor/` is missing or incomplete, activation can fatal-error the site. The zip
+builder runs `composer install --no-dev --prefer-dist --optimize-autoloader
+--no-interaction` automatically when Composer is available; otherwise it fails
+with the exact command to run. Do not upload a theme zip without
+`vendor/autoload.php`, `vendor/htmlburger/carbon-fields`, and
+`vendor/kucrut/vite-for-wp`.
 
 For live/staging automation, prefer fixed WP-CLI commands running locally on
 the VPS. Do not use browser automation or public endpoints for actions that

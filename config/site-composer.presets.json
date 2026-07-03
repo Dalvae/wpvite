@@ -43,6 +43,10 @@
       "status": "implemented",
       "description": "Centered fullscreen hero section."
     },
+    "hero-video": {
+      "status": "implemented",
+      "description": "Reusable fullscreen hero with optional video, fallback image, actions, ticker and highlight panel."
+    },
     "stats-band": {
       "status": "implemented",
       "description": "Responsive stat tile grid with count-up support."

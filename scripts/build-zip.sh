@@ -16,12 +16,14 @@ THEME_SLUG="starter"
 OUTPUT_DIR="$ROOT_DIR"
 RUN_BUILD="1"
 CLEAN_PREVIOUS="1"
+RUN_COMPOSER="1"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --slug)    THEME_SLUG="${2:-}"; shift 2 ;;
     --output)  OUTPUT_DIR="${2:-}"; shift 2 ;;
     --no-build) RUN_BUILD="0"; shift ;;
+    --no-composer) RUN_COMPOSER="0"; shift ;;
     --keep-old) CLEAN_PREVIOUS="0"; shift ;;
     *) echo "Unknown argument: $1" >&2; exit 1 ;;
   esac
@@ -47,7 +49,23 @@ if [[ "$RUN_BUILD" == "1" ]]; then
 fi
 
 [[ -d dist ]] || { echo "ERROR: dist/ not found." >&2; exit 1; }
-[[ -d vendor ]] || { echo "ERROR: vendor/ not found." >&2; exit 1; }
+
+if [[ ! -f vendor/autoload.php ]]; then
+  if [[ "$RUN_COMPOSER" == "1" ]] && command -v composer >/dev/null 2>&1; then
+    echo "==> Installing Composer dependencies for packaged theme..."
+    composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+  else
+    echo "ERROR: vendor/autoload.php not found." >&2
+    echo "Run this before building the theme zip:" >&2
+    echo "  composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction" >&2
+    echo "The theme requires vendor/ in the zip because functions.php loads vendor/autoload.php (Carbon Fields, Vite for WP)." >&2
+    exit 1
+  fi
+fi
+
+[[ -f vendor/autoload.php ]] || { echo "ERROR: vendor/autoload.php still missing after Composer install." >&2; exit 1; }
+[[ -d vendor/htmlburger/carbon-fields ]] || { echo "ERROR: vendor/htmlburger/carbon-fields missing; run composer install from a valid composer.lock." >&2; exit 1; }
+[[ -d vendor/kucrut/vite-for-wp ]] || { echo "ERROR: vendor/kucrut/vite-for-wp missing; run composer install from a valid composer.lock." >&2; exit 1; }
 
 [[ "$CLEAN_PREVIOUS" == "1" ]] && rm -f "${OUTPUT_DIR%/}/${THEME_SLUG}"-theme-*.zip
 
@@ -61,7 +79,7 @@ cp -f style.css "$ASSEMBLY_DIR/"
 [[ -f composer.lock ]] && cp -f composer.lock "$ASSEMBLY_DIR/"
 [[ -f wpml-config.xml ]] && cp -f wpml-config.xml "$ASSEMBLY_DIR/"
 
-for dir in components inc template-parts builder dist vendor images favicon languages assets config manifests; do
+for dir in components inc template-parts builder dist vendor favicon languages assets config manifests; do
   [[ -d "$dir" ]] && cp -R "$dir" "$ASSEMBLY_DIR/"
 done
 
@@ -92,7 +110,7 @@ echo "==> Creating zip: $ZIP_PATH"
   zip -rq "$ZIP_PATH" "$THEME_SLUG" \
     -x "*/__pycache__/*" -x "*.pyc" -x "*/tmp/*" -x "*/.git/*" \
     -x "*/.github/*" -x "*/node_modules/*" -x "*/docs/*" \
-    -x "*/scripts/*" -x "*/src/*" -x "*/reference/*" -x "*.zip"
+    -x "*/scripts/*" -x "*/src/*" -x "*/images/*" -x "*/brief/*" -x "*/reference/*" -x "*.zip"
 )
 
 SIZE="$(du -h "$ZIP_PATH" | cut -f1)"

@@ -2,7 +2,7 @@
 """Generate wpml-config.xml from section field maps and manifest data.
 
 Reads config/section-field-maps.json and manifests/pages/*.json to produce
-a complete WPML config with per-field and per-sub-key entries.
+a complete WPML config with per-field entries.
 
 Usage:
   python scripts/generate-wpml-config.py           # write wpml-config.xml
@@ -24,14 +24,6 @@ FIELD_MAPS_PATH = PROJECT_ROOT / "config" / "section-field-maps.json"
 MANIFESTS_DIR = PROJECT_ROOT / "manifests" / "pages"
 OUTPUT_PATH = PROJECT_ROOT / "wpml-config.xml"
 
-COPY_SUB_KEYS = frozenset({
-    "href", "url", "link", "icon", "variant", "index",
-    "image_url", "media_image_url", "photo_url", "image_position", "tag",
-})
-
-COPY_ONCE_SUB_KEYS = frozenset({"href", "url", "link"})
-
-
 def load_field_maps() -> dict[str, list[dict[str, Any]]]:
     data = json.loads(FIELD_MAPS_PATH.read_text(encoding="utf-8"))
     return data.get("pages", {})
@@ -40,31 +32,26 @@ def load_field_maps() -> dict[str, list[dict[str, Any]]]:
 def load_manifest(slug: str) -> dict[str, Any] | None:
     path = MANIFESTS_DIR / f"{slug}.json"
     if not path.exists():
-        return None
+        raise ValueError(f"{slug}: field map exists but manifests/pages/{slug}.json is missing")
     try:
         return json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
-        return None
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"{slug}: invalid manifest JSON: {exc}") from exc
 
 
-def discover_sub_keys(value: Any) -> list[str]:
-    if not isinstance(value, list):
-        return []
-    keys: dict[str, None] = {}
-    for item in value:
-        if isinstance(item, dict):
-            for k in item:
-                if not k.startswith("_"):
-                    keys[k] = None
-    return list(keys.keys())
-
-
-def sub_key_action(key: str) -> str:
-    if key in COPY_ONCE_SUB_KEYS:
-        return "copy-once"
-    if key in COPY_SUB_KEYS:
-        return "copy"
-    return "translate"
+def validate_manifest_alignment(page_slug: str, sections: list[dict[str, Any]], manifest_sections: list[Any]) -> None:
+    if len(manifest_sections) != len(sections):
+        raise ValueError(
+            f"{page_slug}: section-field-maps has {len(sections)} sections but manifest has {len(manifest_sections)}"
+        )
+    for index, sdef in enumerate(sections):
+        manifest_section = manifest_sections[index]
+        manifest_type = manifest_section.get("type") if isinstance(manifest_section, dict) else None
+        map_type = sdef.get("type")
+        if manifest_type != map_type:
+            raise ValueError(
+                f"{page_slug}: section[{index}] type mismatch: field map has {map_type!r}, manifest has {manifest_type!r}"
+            )
 
 
 def generate_xml(field_maps: dict[str, list[dict[str, Any]]]) -> str:
@@ -85,7 +72,8 @@ def generate_xml(field_maps: dict[str, list[dict[str, Any]]]) -> str:
 
     for page_slug, sections in sorted(field_maps.items()):
         manifest = load_manifest(page_slug)
-        manifest_sections = manifest.get("sections", []) if manifest else []
+        manifest_sections = manifest.get("sections", [])
+        validate_manifest_alignment(page_slug, sections, manifest_sections)
 
         lines.append("")
         lines.append(f"    <!-- {'=' * 50} -->")
@@ -96,21 +84,16 @@ def generate_xml(field_maps: dict[str, list[dict[str, Any]]]) -> str:
             lines.append("")
             lines.append(f"    <!-- {sdef['type']} (#{si + 1}) -->")
 
-            ms = manifest_sections[si] if si < len(manifest_sections) else {}
-
             for fname, fdef in sdef.get("fields", {}).items():
                 mk = f"{sdef['prefix']}_{fname}"
                 wpml = fdef.get("wpml", "translate") if isinstance(fdef, dict) else "translate"
                 storage = fdef.get("storage", "text") if isinstance(fdef, dict) else str(fdef)
 
                 lines.append(f'    <custom-field action="{wpml}">{mk}</custom-field>')
-
                 if storage == "json" and wpml == "translate":
-                    for sk in discover_sub_keys(ms.get(fname)):
-                        lines.append(
-                            f'    <custom-field action="{sub_key_action(sk)}">'
-                            f"{mk}|{sk}|*|0|value</custom-field>"
-                        )
+                    lines.append(
+                        "    <!-- JSON stored as one Carbon meta value; verify XLIFF output before relying on nested translation granularity. -->"
+                    )
 
     lines += ["", "  </custom-fields>", "", "</wpml-config>", ""]
     return "\n".join(lines)
@@ -125,7 +108,11 @@ def main() -> None:
 
     field_maps = load_field_maps()
 
-    xml = generate_xml(field_maps)
+    try:
+        xml = generate_xml(field_maps)
+    except ValueError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        sys.exit(1)
 
     if args.check:
         if OUTPUT_PATH.exists() and OUTPUT_PATH.read_text(encoding="utf-8").strip() == xml.strip():

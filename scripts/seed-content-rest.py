@@ -114,11 +114,14 @@ def flatten_sections_perfield(slug: str, sections: list[dict[str, Any]]) -> dict
     field_map = PAGE_FIELD_MAPS.get(slug)
     if not field_map:
         return {}
+    if len(sections) != len(field_map):
+        fail(f"{slug}: section-field-maps has {len(field_map)} sections but manifest has {len(sections)}")
     meta: dict[str, str] = {}
     for i, sdef in enumerate(field_map):
-        if i >= len(sections):
-            break
         section = strip_internal_keys(sections[i])
+        section_type = section.get("type")
+        if section_type != sdef["type"]:
+            fail(f"{slug}: section[{i}] type mismatch: field map has {sdef['type']!r}, manifest has {section_type!r}")
         for fname, ftype in sdef["fields"].items():
             val = section.get(fname)
             if val is None:
@@ -141,7 +144,7 @@ def flatten_sections_to_meta(manifest: dict[str, Any]) -> dict[str, Any]:
 
     sections = manifest.get("sections", [])
 
-    if slug in PAGE_FIELD_MAPS and sections:
+    if slug in PAGE_FIELD_MAPS:
         meta.update(flatten_sections_perfield(slug, sections))
 
     if sections:

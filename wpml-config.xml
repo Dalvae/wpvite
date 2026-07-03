@@ -11,6 +11,52 @@
     <custom-field action="copy">starter_page_family</custom-field>
     <custom-field action="copy">starter_page_sections</custom-field>
 
+    <!-- ================================================== -->
+    <!-- HOME PAGE -->
+    <!-- ================================================== -->
+
+    <!-- hero-video (#1) -->
+    <custom-field action="translate">home_hero_video_kicker</custom-field>
+    <custom-field action="translate">home_hero_video_title</custom-field>
+    <custom-field action="copy">home_hero_video_title_tag</custom-field>
+    <custom-field action="translate">home_hero_video_title_accent</custom-field>
+    <custom-field action="translate">home_hero_video_intro</custom-field>
+    <custom-field action="translate">home_hero_video_actions</custom-field>
+    <!-- JSON stored as one Carbon meta value; verify XLIFF output before relying on nested translation granularity. -->
+    <custom-field action="copy">home_hero_video_video_url</custom-field>
+    <custom-field action="copy">home_hero_video_video_fallback_image</custom-field>
+    <custom-field action="copy">home_hero_video_image_id</custom-field>
+    <custom-field action="copy">home_hero_video_video_id</custom-field>
+    <custom-field action="copy">home_hero_video_mobile_image_id</custom-field>
+    <custom-field action="translate">home_hero_video_ticker_items</custom-field>
+    <!-- JSON stored as one Carbon meta value; verify XLIFF output before relying on nested translation granularity. -->
+    <custom-field action="translate">home_hero_video_proximity_panel</custom-field>
+    <!-- JSON stored as one Carbon meta value; verify XLIFF output before relying on nested translation granularity. -->
+
+    <!-- stats-band (#2) -->
+    <custom-field action="translate">home_stats_kicker</custom-field>
+    <custom-field action="translate">home_stats_title</custom-field>
+    <custom-field action="translate">home_stats_items</custom-field>
+    <!-- JSON stored as one Carbon meta value; verify XLIFF output before relying on nested translation granularity. -->
+
+    <!-- offer-cards (#3) -->
+    <custom-field action="translate">home_offers_kicker</custom-field>
+    <custom-field action="translate">home_offers_title</custom-field>
+    <custom-field action="translate">home_offers_items</custom-field>
+    <!-- JSON stored as one Carbon meta value; verify XLIFF output before relying on nested translation granularity. -->
+
+    <!-- faq-accordion (#4) -->
+    <custom-field action="translate">home_faq_kicker</custom-field>
+    <custom-field action="translate">home_faq_title</custom-field>
+    <custom-field action="translate">home_faq_items</custom-field>
+    <!-- JSON stored as one Carbon meta value; verify XLIFF output before relying on nested translation granularity. -->
+
+    <!-- final-cta (#5) -->
+    <custom-field action="translate">home_final_cta_title</custom-field>
+    <custom-field action="translate">home_final_cta_intro</custom-field>
+    <custom-field action="translate">home_final_cta_items</custom-field>
+    <!-- JSON stored as one Carbon meta value; verify XLIFF output before relying on nested translation granularity. -->
+
   </custom-fields>
 
 </wpml-config>

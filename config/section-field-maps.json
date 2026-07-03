@@ -1,4 +1,62 @@
 {
-  "_doc": "Single source of truth for per-page section field maps. Read by PHP (carbon-fields-page-fields.php), Python seeder (seed-content-rest.py), and WPML generator (generate-wpml-config.py). Field wpml values: translate, copy, copy-once. Add pages here when spinning off — the starter ships empty.",
-  "pages": {}
+  "_doc": "Single source of truth for per-page section field maps. Read by PHP (carbon-fields-page-fields.php), Python seeder (seed-content-rest.py), and WPML generator (generate-wpml-config.py). Every reusable manifest field that should reach Carbon Fields/WPML must be mapped here.",
+  "pages": {
+    "home": [
+      {
+        "type": "hero-video",
+        "prefix": "home_hero_video",
+        "fields": {
+          "kicker": { "storage": "text", "wpml": "translate" },
+          "title": { "storage": "text", "wpml": "translate" },
+          "title_tag": { "storage": "text", "wpml": "copy" },
+          "title_accent": { "storage": "text", "wpml": "translate" },
+          "intro": { "storage": "textarea", "wpml": "translate" },
+          "actions": { "storage": "json", "wpml": "translate" },
+          "video_url": { "storage": "text", "wpml": "copy" },
+          "video_fallback_image": { "storage": "text", "wpml": "copy" },
+          "image_id": { "storage": "text", "wpml": "copy" },
+          "video_id": { "storage": "text", "wpml": "copy" },
+          "mobile_image_id": { "storage": "text", "wpml": "copy" },
+          "ticker_items": { "storage": "json", "wpml": "translate" },
+          "proximity_panel": { "storage": "json", "wpml": "translate" }
+        }
+      },
+      {
+        "type": "stats-band",
+        "prefix": "home_stats",
+        "fields": {
+          "kicker": { "storage": "text", "wpml": "translate" },
+          "title": { "storage": "text", "wpml": "translate" },
+          "items": { "storage": "json", "wpml": "translate" }
+        }
+      },
+      {
+        "type": "offer-cards",
+        "prefix": "home_offers",
+        "fields": {
+          "kicker": { "storage": "text", "wpml": "translate" },
+          "title": { "storage": "text", "wpml": "translate" },
+          "items": { "storage": "json", "wpml": "translate" }
+        }
+      },
+      {
+        "type": "faq-accordion",
+        "prefix": "home_faq",
+        "fields": {
+          "kicker": { "storage": "text", "wpml": "translate" },
+          "title": { "storage": "text", "wpml": "translate" },
+          "items": { "storage": "json", "wpml": "translate" }
+        }
+      },
+      {
+        "type": "final-cta",
+        "prefix": "home_final_cta",
+        "fields": {
+          "title": { "storage": "text", "wpml": "translate" },
+          "intro": { "storage": "textarea", "wpml": "translate" },
+          "items": { "storage": "json", "wpml": "translate" }
+        }
+      }
+    ]
+  }
 }

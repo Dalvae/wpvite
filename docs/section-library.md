@@ -59,6 +59,41 @@ Default scene behavior:
 - fullscreen
 - centered layout
 
+### `hero-video`
+
+Wrapper:
+
+- `template-parts/sections/hero-video.php`
+
+Body:
+
+- `components/section-bodies/hero-video.php`
+
+Main args:
+
+- `kicker`
+- `title`
+- `title_accent`
+- `intro`
+- `actions`
+- `video_url` / `video_id`
+- `video_fallback_image` / `image_id`
+- `mobile_image_id`
+- `ticker_items`
+- `proximity_panel`
+
+Default scene behavior:
+
+- fullscreen neutral video/still hero
+- shell-less section wrapper so the media can fill the viewport
+- optional action buttons, ticker labels, and highlight panel
+
+For WPML, every reusable `hero-video` field used in manifests must also be in
+`config/section-field-maps.json`; then seed from manifests and regenerate
+`wpml-config.xml`. Complex fields such as `actions`, `ticker_items`, and
+`proximity_panel` are stored as JSON meta values, so verify a real WPML XLIFF
+round-trip before promising per-subfield translator controls.
+
 ### `stats-band`
 
 Wrapper:

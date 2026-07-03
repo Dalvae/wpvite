@@ -179,6 +179,31 @@ if (!function_exists('starter_page_slug_from_post')) {
             }
         }
 
+        // WPML translations can have translated slugs that do not exist in the
+        // field maps. Resolve the original-language post slug so translated
+        // pages still reconstruct their per-field Carbon Fields meta.
+        if (has_filter('wpml_object_id')) {
+            $default_lang = apply_filters('wpml_default_language', null);
+            $orig_id = (int) apply_filters('wpml_object_id', $post_id, ($post->post_type ?: 'page'), false, $default_lang);
+            if ($orig_id && $orig_id !== $post_id) {
+                $orig = get_post($orig_id);
+                if ($orig) {
+                    if (isset($maps[$orig->post_name])) {
+                        return $orig->post_name;
+                    }
+                    if ($orig->post_parent > 0) {
+                        $orig_parent = get_post($orig->post_parent);
+                        if ($orig_parent) {
+                            $orig_composite = $orig_parent->post_name . '/' . $orig->post_name;
+                            if (isset($maps[$orig_composite])) {
+                                return $orig_composite;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         return '';
     }
 }

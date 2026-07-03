@@ -4,9 +4,10 @@
   "template": "section-stack",
   "sections": [
     {
-      "type": "hero-split",
+      "type": "hero-video",
       "kicker": "Northshore Advisory",
       "title": "Operational clarity for growing service teams",
+      "title_accent": "without rebuilding the system",
       "intro": "Choose a brand preset, select the sections you need, and adapt the content instead of rebuilding the site system.",
       "actions": [
         {
@@ -21,7 +22,26 @@
           "variant": "ghost",
           "icon": "external-link"
         }
-      ]
+      ],
+      "video_url": "",
+      "video_fallback_image": "",
+      "image_id": "0",
+      "video_id": "0",
+      "mobile_image_id": "0",
+      "ticker_items": [
+        "Brand presets",
+        "Section manifests",
+        "Carbon Fields",
+        "WPML-ready fields"
+      ],
+      "proximity_panel": {
+        "title": "Starter checklist",
+        "items": [
+          "Map fields in JSON",
+          "Seed manifests into Carbon Fields",
+          "Generate wpml-config.xml"
+        ]
+      }
     },
     {
       "type": "stats-band",

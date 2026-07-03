@@ -106,6 +106,13 @@ if (!function_exists('starter_get_section_registry')) {
                 'layout_variant' => 'stack',
                 'body_template' => 'components/section-bodies/final-cta',
             ),
+            'hero-video' => array(
+                'surface_variant' => 'plain',
+                'spacing_variant' => 'none',
+                'layout_variant' => 'none',
+                'body_template' => 'components/section-bodies/hero-video',
+                'shell_variant' => 'none',
+            ),
         );
     }
 }
