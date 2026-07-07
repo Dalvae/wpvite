@@ -14,6 +14,7 @@
     "daisyui": "^5.5.19",
     "impeccable": "^3.2.0",
     "lighthouse": "^13.4.0",
+    "playwright": "^1.57.0",
     "tailwindcss": "^4.1.18",
     "vite": "^7.3.5",
     "vite-plugin-live-reload": "^3.1.0"
@@ -21,6 +22,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:critical": "vite build && node scripts/generate-critical-playwright.mjs",
+    "critical:generate": "node scripts/generate-critical-playwright.mjs",
+    "critical:verify": "node scripts/generate-critical-playwright.mjs --verify-only",
+    "critical:legacy": "node scripts/generate-critical-css.mjs",
     "preview": "vite preview",
     "compose:site": "node scripts/compose-site.mjs",
     "compose:site:write": "node scripts/compose-site.mjs --write",

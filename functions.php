@@ -5,6 +5,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 require 'inc/vite.php';
 require 'inc/performance.php';
+require 'inc/critical-css.php';
+require 'inc/landing.php';
 
 require 'inc/acf.php';
 require 'inc/carbon-fields.php';
